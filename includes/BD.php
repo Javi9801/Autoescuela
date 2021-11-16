@@ -1,5 +1,5 @@
 <?php
-require_once('./Clases/imagen.php');
+require_once('./entidades/usuario.php');
 
 class BD{
     private static $con;
@@ -44,17 +44,26 @@ class BD{
 
     public static function altaUsuario(usuario $u){
 
-        $res = self::$con->prepare("Insert into Tienda.users values(:nombre, :correo, :password, :rol)");
+        $res = self::$con->prepare("Insert into autoescuela.usuario values(default, :email, :nombre, :apellidos, :password, :fecha_nacimiento, :rol, :foto, :activo)");
 
-        $nombre = $u->getNombre();
-        $correo = $u->getCorreo();
-        $password = $u->getPassword();
-        $rol = $u->getRol();
+        $nombre = $u->nombre;
+        $email = $u->email;
+        $password = $u->password;
+        $rol = $u->rol;
+        $apellidos = $u->apellidos;
+        $fecha_nacimiento = $u->fecha_nacimiento;
+        $foto = $u->foto;
+        $activo = $u->activo;
 
+
+        $res->bindParam(':email',$email);
         $res->bindParam(':nombre',$nombre);
-        $res->bindParam(':correo',$correo);
+        $res->bindParam(':apellidos',$apellidos);
         $res->bindParam(':password',$password);
+        $res->bindParam(':fecha_nacimiento',$fecha_nacimiento);
         $res->bindParam(':rol',$rol);
+        $res->bindParam(':foto',$foto);
+        $res->bindParam(':activo',$activo);
 
         $res->execute();
     }

@@ -23,11 +23,10 @@ class Usuario{
         }
     }
 
-    public function __construct($id, $email, $nombre, $apellidos, $password, $fecha_nacimiento, $rol, $foto, $activo){
-        $this->id = $id;
+    public function __construct($email, $nombre, $apellidos, $password, $fecha_nacimiento, $rol, $foto, $activo){
         $this->nombre = $nombre;
         $this->apellidos = $apellidos;
-        $this->correo = $correo;
+        $this->email = $email;
         $this->password = $password;
         $this->fecha_nacimiento = $fecha_nacimiento;
         $this->rol = $rol;
