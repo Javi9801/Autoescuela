@@ -1,3 +1,35 @@
+<?php
+    require_once("includes/sesion.php");
+    require_once("includes/BD.php");
+    require_once("includes/login.php");
+    $error = "";
+
+    if(isset($_POST['aceptar'])){
+        sesion::iniciar();
+        BD::conecta();
+        $usuario = $_POST['login_email'];
+        $password = $_POST['login_contraseña'];
+
+        if(empty($usuario) || empty($password)){
+            $error = "Debes introducir un nombre de usuario y contraseña";
+        } else {
+
+            if(login::identifica($usuario, $password, false)){
+                if(login::usuarioEstaLogueado()){
+
+
+                    sesion::escribir('usuario', BD::obtieneUsuario($usuario, $password));
+                    header("Location: historicoExamenes.php");
+                }
+            } else {
+                echo ("Usuario o contraseña incorrectos");
+            }
+        }
+    }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +45,7 @@
         <label for="login_usuario">Usuario/Email</label>
         <p><input type="text" id="login_email" name="login_email" value=""> <span class="error_login">Usuario Incorrecto</span></p>
 
-        
+
 
         <label for="login_contraseña">Contraseña</label>
         <p><input type="text" id="login_contraseña" name="login_contraseña" value=""> <span class="error_login">Contraseña Incorrecto</span></p>

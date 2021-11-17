@@ -9,31 +9,36 @@ class BD{
     }
 
 
-    public static function obtieneUsuarios():array{
+    public static function obtieneUsuarios(){
         $ret = array();
 
-        $res = self::$con->query("Select * from Tienda.users");
-        while($registro = $res->fetch()){
-            $u = new usuario($registro['Nombre'],$registro['Correo'],$registro['Password'],$registro['Rol']);
-            $ret[] = $u;
-        }
+        $res = self::$con->query("Select * from autoescuela.usuario");
 
-        return $ret;
+        $filas = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($filas);
 
     }
 
-    public static function obtieneUsuario($nombre):usuario{
-        $res = self::$con->query("Select * from Tienda.users where Nombre = '$nombre'");
+    public static function obtieneUsuario($email,$password){
+        $res = self::$con->query("Select * from Autoescuela.usuario where email = '$email' and password = '$password");
 
-        while($registro = $res->fetch()){
-            $u = new usuario($registro['Nombre'],$registro['Correo'],$registro['Password'],$registro['Rol']);
+
+        if($res != false){
+            $registro = $res->fetch();
+
+            $u = new usuario($registro['email'],$registro['nombre'],$registro['apellidos'],$registro['password'],$registro['fecha_nacimiento'],$registro['rol'],$registro['foto'],$registro['activo']);
+
+            $u->id = $registro['id'];
+
+            return $u;
         }
 
-        return $u;
+        return false;
     }
 
-    public static function existeUsuario($nombre){
-        $res = self::$con->query("Select * from Tienda.users where Nombre = '$nombre'");
+    public static function existeUsuario($email, $password){
+        $res = self::$con->query("Select * from Autoescuela.usuario where email = '$email' and password = '$password'");
 
         $cons = $res->fetch();
         if($cons!=0){

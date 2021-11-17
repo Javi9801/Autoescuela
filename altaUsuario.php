@@ -51,12 +51,7 @@ require_once("includes/BD.php");
         // $activo = $_POST['activo'];
 
 
-        $u = new Usuario($email,$nombre,$apellidos,$password,$fecha_nacimiento,'usuario',"jorge.png",1);
-
-
-        var_dump($u);
-
-        echo BD::altaUsuario($u);
+        $u = new Usuario($email,$nombre,$apellidos,$password,$fecha_nacimiento,1,"jorge.png",1);
     }
 
 ?>
