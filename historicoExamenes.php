@@ -1,7 +1,7 @@
 <?php
-  require_once("includes/sesion.php");
-  require_once("includes/BD.php");
-  require_once("includes/login.php");
+  require_once("helpers/sesion.php");
+  require_once("helpers/BD.php");
+  require_once("helpers/login.php");
 
 sesion::iniciar();
 BD::conecta();

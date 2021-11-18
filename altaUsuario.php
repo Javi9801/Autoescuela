@@ -27,6 +27,9 @@
         <label for="usuario_fecha">Fecha Nacimiento</label>
         <p><input type="date" id="usuario_fecha" name="usuario_fecha" value=""></p>
 
+        <label for="usuario_imagen">Foto Usuario</label>
+        <p><input type="file" id="usuario_imagen" name="usuario_imagen" value=""></p>
+
         <p><input type="submit" id="usuario_enviar" name="usuario_enviar" value="Aceptar"></p>
 
     </form>
@@ -35,7 +38,7 @@
 
 <?php
 require_once("entidades/usuario.php");
-require_once("includes/BD.php");
+require_once("helpers/BD.php");
 
 
 
