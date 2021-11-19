@@ -8,6 +8,11 @@ class BD{
         self::$con = new PDO('mysql:host=localhost;dbname=autoescuela', 'root', '');
     }
 
+    public static function obtieneTabla($tabla){
+        $res = self::$con->query("Select * from autoescuela.$tabla");
+        return $res;
+    }
+
 
     //Metodos relacionados con el usuario
 
@@ -97,16 +102,7 @@ class BD{
     }
 
 
-    public static function obtieneTabla($tabla){
-        $ret = array();
 
-        var_dump(self::$con);
-        $res = self::$con->query("Select * from autoescuela.$tabla");
-        var_dump($res);
-        return $res;
-
-
-    }
 
 
 

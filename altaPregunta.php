@@ -13,7 +13,7 @@
         <p>
             <?php
                 require_once("helpers/funciones.php");
-                funciones::selectDinamico("pregunta_tematica", "tematica");
+                echo(funciones::selectDinamico("pregunta_tematica", "tematica"));
             ?>
         </p>
 
@@ -60,12 +60,9 @@ require_once("helpers/BD.php");
         BD::conecta();
         $enunciado = $_POST['pregunta_enunciado'];
         $tematica = BD::obtieneTematica($_POST['pregunta_tematica']);
-        $password = $_POST['usuario_contraseña'];
-        // $rol = $_POST['rol'];
+
         $apellidos = $_POST['usuario_apellidos'];
         $fecha_nacimiento = $_POST['usuario_fecha'];
-        // $foto = $_POST['foto'];
-        // $activo = $_POST['activo'];
 
 
         $u = new Usuario($email,$nombre,$apellidos,$password,$fecha_nacimiento,1,"jorge.png",1);

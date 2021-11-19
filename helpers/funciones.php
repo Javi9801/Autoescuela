@@ -21,15 +21,14 @@ class Funciones{
         BD::conecta();
         $vec = BD::obtieneTabla($tabla);
 
-        $select = "<select name=".$idsel." id=".$idsel.">";
+        $select = "<select name='$idsel' id='$idsel'>";
 
         while($registro = $vec->fetch()){
-            $select +="<option value=".$registro[0].">".
-            $registro[1]."</option>";
-
-            var_dump($registro);
+            $id = $registro[0];
+            $des = $registro[1];
+            $select .="<option value='$id'>".$des."</option>";
         }
-        $select = "</select>";
+        $select .= "</select>";
 
         return $select;
     }
