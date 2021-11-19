@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+
+    <h1>Alta Usuario</h1>
     <form action="altaUsuario.php" method="POST">
 
         <label for="usuario_email">Email</label>

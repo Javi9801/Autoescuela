@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+
+    <h1>Alta Preguntas</h1>
     <form action="altaPregunta.php" method="POST">
 
         <label for="pregunta_tematica">Tematica</label>
@@ -22,24 +24,24 @@
 
         <label for="pregunta_respuesta_1">Opcion 1</label>
         <p><input type="text" id="pregunta_respuesta_1" name="pregunta_respuesta_1" value="">
-        <input type="radio" id="opcion1" name="opciones"> Correcta
+        <input type="radio" id="opcion1" value="opcion1" name="opciones"> Correcta
         </p>
 
         <label for="pregunta_respuesta_2">Opcion 2</label>
         <p><input type="text" id="pregunta_respuesta_2" name="pregunta_respuesta_2" value="">
-        <input type="radio" id="opcion2" name="opciones"> Correcta
+        <input type="radio" id="opcion2" value="opcion2" name="opciones"> Correcta
 
         </p>
 
         <label for="pregunta_respuesta_3">Opcion 3</label>
         <p><input type="text" id="pregunta_respuesta_3" name="pregunta_respuesta_3" value="">
-        <input type="radio" id="opcion3" name="opciones"> Correcta
+        <input type="radio" id="opcion3" value="opcion3" name="opciones"> Correcta
 
         </p>
 
         <label for="pregunta_respuesta_4">Opcion 4</label>
         <p><input type="text" id="pregunta_respuesta_4" name="pregunta_respuesta_4" value="">
-        <input type="radio" id="opcion4" name="opciones"> Correcta
+        <input type="radio" id="opcion4" value="opcion4" name="opciones"> Correcta
         </p>
 
 
@@ -53,6 +55,7 @@
 <?php
 require_once("entidades/pregunta.php");
 require_once("helpers/BD.php");
+require_once("entidades/respuesta.php");
 
 
 
@@ -60,12 +63,34 @@ require_once("helpers/BD.php");
         BD::conecta();
         $enunciado = $_POST['pregunta_enunciado'];
         $tematica = BD::obtieneTematica($_POST['pregunta_tematica']);
+        $enunciado = $_POST['pregunta_enunciado'];
+        $respuestas = array();
+        $r = array();
+        for($i=1;$i<=4;$i++){
+            $r[] = $_POST['pregunta_respuesta_'.$i.''];
 
-        $apellidos = $_POST['usuario_apellidos'];
-        $fecha_nacimiento = $_POST['usuario_fecha'];
+            if($_POST['opciones'] == 'opcion'.$i.''){
+                $correcta = $_POST['pregunta_respuesta_'.$i.''];
+            }
+        }
 
+        $p = new Pregunta($enunciado,"imagen",$tematica);
+        BD::altaPregunta($p);
+    
+        foreach($r as $i){
+            $resp = new respuesta($r[$i]->enunciado, $p->id);
+            $respuestas[] = $resp;
+        }
+        $p->respuestas = $respuestas;
 
-        $u = new Usuario($email,$nombre,$apellidos,$password,$fecha_nacimiento,1,"jorge.png",1);
+        BD::altaPregunta($p);
+
+        foreach($respuestas as $i){
+          BD::altaRespuesta($i);
+        }
+
+        BD::altaRespuestaCorrecta($p,$correcta);
+
     }
 
 ?>

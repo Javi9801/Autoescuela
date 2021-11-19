@@ -1,10 +1,12 @@
 <?php
+require_once("tematica.php");
+require_once("respuesta.php");
 
 class Pregunta{
     private $id;
     private $enunciado;
     private $imagen;
-    private $id_tematica;
+    private $tematica;
     private $respuestas;
 
     public function __get($atributo){
@@ -19,10 +21,10 @@ class Pregunta{
         }
     }
 
-    public function __construct($enunciado, $imagen, $id_tematica){
+    public function __construct($enunciado, $imagen, $tematica){
         $this->enunciado = $enunciado;
         $this->imagen = $imagen;
-        $this->id_tematica = $id_tematica;
+        $this->tematica = $tematica;
     }
 }
 
