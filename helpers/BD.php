@@ -9,7 +9,9 @@ class BD{
     }
 
 
-    public static function obtieneUsuarios(){
+    //Metodos relacionados con el usuario
+
+    public static function obtieneUsuariosJSON(){
         $ret = array();
 
         $res = self::$con->query("Select * from autoescuela.usuario");
@@ -73,13 +75,39 @@ class BD{
         $res->execute();
     }
 
-    public static function bajaUsuario(usuario $u){
-        $correo = $u->getCorreo();
+    // public static function bajaUsuario(usuario $u){
+    //     $correo = $u->getCorreo();
 
-        $res = self::$con->prepare("Delete from Tienda.users where Correo = '$correo'");
-        $res->bindParam(':correo',$correo);
-        $res->execute();
+    //     $res = self::$con->prepare("Delete from Tienda.users where Correo = '$correo'");
+    //     $res->bindParam(':correo',$correo);
+    //     $res->execute();
+    // }
+
+
+    //Metodos relacionados con las tematicas
+
+    public static function obtieneTematicasJSON(){
+
+        $res = self::$con->query("Select * from autoescuela.tematica");
+
+        $filas = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($filas);
+
     }
+
+
+    public static function obtieneTabla($tabla){
+        $ret = array();
+
+        var_dump(self::$con);
+        $res = self::$con->query("Select * from autoescuela.$tabla");
+        var_dump($res);
+        return $res;
+
+
+    }
+
 
 
 }

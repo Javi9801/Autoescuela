@@ -6,4 +6,4 @@
 sesion::iniciar();
 BD::conecta();
 
-var_dump(BD::obtieneUsuarios());
+var_dump(BD::obtieneUsuariosJSON());

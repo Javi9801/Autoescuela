@@ -5,6 +5,7 @@ class Pregunta{
     private $enunciado;
     private $imagen;
     private $id_tematica;
+    private $respuestas;
 
     public function __get($atributo){
         if(property_exists($this, $atributo)){

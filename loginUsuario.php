@@ -35,43 +35,32 @@
     require_once("helpers/sesion.php");
     require_once("helpers/BD.php");
     require_once("helpers/login.php");
-    require_once("helpers/funciones.php");
+    require_once("helpers/validacion.php");
     $error = "";
 
 
     if(isset($_POST['aceptar'])){
+        $usuario = $_POST['login_email'];
+        $password = $_POST['login_contraseña'];
 
-        $errores = [];
-        $errores = funciones::validarLogin($_POST['login_email'], $_POST['login_contraseña']);
-
-        if(count($errores)==0){
-            sesion::iniciar();
-            BD::conecta();
-            $usuario = $_POST['login_email'];
-            $password = $_POST['login_contraseña'];
-
-            if(empty($usuario) || empty($password)){
-                $error = "Debes introducir un nombre de usuario y contraseña";
-                echo $error;
-            } else {
-
+        $validar = new Validacion();
+        $validar->Requerido($usuario);
+        $validar->Requerido($password);
+            if($validar->ValidacionPasada()){
+                sesion::iniciar();
+                BD::conecta();
                 if(login::identifica($usuario, $password, false)){
                     if(login::usuarioEstaLogueado()){
-
-
                         sesion::escribir('usuario', BD::obtieneUsuario($usuario, $password));
                         header("Location: historicoExamenes.php");
                     }
                 } else {
                     header("Location: loginUsuario.php");
                 }
+            } else {
+                header("Location: loginUsuario.php");
             }
-        } else {
-            header("Location: loginUsuario.php");
-            // foreach($errores as $v){
-            //     echo "<script> alert('".$v."'); </script>";
-            // }
-        }
+
     }
 
 
