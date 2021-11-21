@@ -76,14 +76,17 @@ require_once("entidades/respuesta.php");
 
         $p = new Pregunta($enunciado,"imagen",$tematica);
         BD::altaPregunta($p);
+
+        $ultId = BD::ultimoIdInsertado("usuario");
+        $p->id = $ultId;
     
         foreach($r as $i){
-            $resp = new respuesta($r[$i]->enunciado, $p->id);
+            $resp = new respuesta($i->enunciado, $p->id);
             $respuestas[] = $resp;
         }
         $p->respuestas = $respuestas;
 
-        BD::altaPregunta($p);
+        BD::addRespuestas($respuestas);
 
         foreach($respuestas as $i){
           BD::altaRespuesta($i);

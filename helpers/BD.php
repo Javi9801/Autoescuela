@@ -121,14 +121,14 @@ class BD{
 
     //Metodos relacionados con las preguntas y respuestas
 
-    public static function altaPregunta(pregunta $u, respuesta $r){
+    public static function altaPregunta(pregunta $u){
 
-        $res = self::$con->prepare("Insert into autoescuela.pregunta values(default, :enunciado, :imagen, :tematica)");
+        $res = self::$con->prepare("Insert into autoescuela.pregunta (id, enunciado, imagen, tematica) values(default, :enunciado, :imagen, :tematica)");
 
         //Inserto una pregunta, todavia sin el array de preguntas
         $enunciado = $u->enunciado;
         $imagen = $u->imagen;
-        $tematica = $u->tematica;
+        $tematica = $u->tematica->id;
         
 
         $res->bindParam(':enunciado',$enunciado);
@@ -136,15 +136,20 @@ class BD{
         $res->bindParam(':tematica',$tematica);
 
         $res->execute();
+    }
 
 
-        foreach($respuestas as $i){
-            self::altaRespuesta($i);
-        }
+    public static function addRespuestas($r, $id){
+        $res = self::$con->prepare("Update autoescuela.pregunta set respuestas = :respuestas where id = :id)");
 
+        //Inserto una pregunta, todavia sin el array de preguntas
         
 
-        self::altaRespuestaCorrecta($u,$r);
+        $res->bindParam(':respuestas',$r);
+        $res->bindParam(':id',$id);
+
+        $res->execute();
+
     }
 
 
@@ -179,5 +184,15 @@ class BD{
 
         $res->execute();
 
+    }
+
+    public static function ultimoIdInsertado($tabla){
+        $res = self::$con->query("SELECT count(*) as id from autoescuela.'$tabla'");
+
+        if($res != false){
+            $registro = $res->fetch();
+            $id = $registro['id'];
+            return $id;
+        }
     }
 }
