@@ -1,0 +1,16 @@
+{
+    "codigoExamen" : null,
+    "enunciado" : null,
+    "numPreguntas" : null,
+    "duracion" : null,
+    "bancoPreguntas":[
+        {
+            "temtica" : "mecanica",
+            "id":27,
+            "enunciado":"sadasdsa",
+            "recurso" : ""
+        }
+    ],
+
+    "preguntaIncluidas" : [34,32,65,34]
+}
