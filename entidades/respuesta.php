@@ -17,9 +17,9 @@ class Respuesta{
         }
     }
 
-    public function __construct($enunciado, $id_tematica){
+    public function __construct($enunciado, $id_pregunta){
         $this->enunciado = $enunciado;
-        $this->id_tematica = $id_tematica;
+        $this->id_pregunta = $id_pregunta;
     }
 }
 

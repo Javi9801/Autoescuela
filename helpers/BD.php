@@ -136,6 +136,8 @@ class BD{
         $res->bindParam(':tematica',$tematica);
 
         $res->execute();
+
+       
     }
 
 
@@ -160,8 +162,8 @@ class BD{
         $res = self::$con->prepare("Insert into autoescuela.respuesta values(default, :enunciado, :id_pregunta)");
 
         //Inserto una pregunta, todavia sin el array de preguntas
-        $enunciado = $u->enunciado;
-        $id_pregunta = $u->id_pregunta;
+        $enunciado = $r->enunciado;
+        $id_pregunta = $r->id_pregunta;
 
         $res->bindParam(':enunciado',$enunciado);
         $res->bindParam(':id_pregunta',$id_pregunta);
@@ -173,11 +175,11 @@ class BD{
     //Metodo que inserta en la tabla pregunta-respuesta
 
     public static function altaRespuestaCorrecta(pregunta $p,respuesta $r){
-        $res = self::$con->prepare("Insert into autoescuela.pregunta_respuesta values(default, :id_pregunta, :id_respuesta)");
+        $res = self::$con->prepare("Insert into autoescuela.pregunta_respuesta values(:id_pregunta, :id_respuesta)");
 
         //Inserto una pregunta, todavia sin el array de preguntas
-        $id_respuesta = $u->id_respuesta;
-        $id_pregunta = $u->id_pregunta;
+        $id_respuesta = $r->id;
+        $id_pregunta = $p->id;
 
         $res->bindParam(':id_pregunta',$id_pregunta);
         $res->bindParam(':id_respuesta',$id_respuesta);
@@ -187,12 +189,11 @@ class BD{
     }
 
     public static function ultimoIdInsertado($tabla){
-        $res = self::$con->query("SELECT count(*) as id from autoescuela.'$tabla'");
+        $res = self::$con->query("select id from $tabla order by id desc limit 0,1");
 
         if($res != false){
-            $registro = $res->fetch();
-            $id = $registro['id'];
-            return $id;
+            $registro = $res->fetchColumn();
+            return (int)$registro;
         }
     }
 }
