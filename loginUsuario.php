@@ -11,7 +11,7 @@
 
 <body>
 
-    <form id="login_form" action="" method="POST">
+    <form id="login_form" class="login" action="" method="POST">
 
         <section>
         <p><img src="recursos/logo.png"  width="200px" height="200px" alt=""></p>
@@ -61,7 +61,7 @@
                 if(login::identifica($usuario, $password, false)){
                     if(login::usuarioEstaLogueado()){
                         sesion::escribir('usuario', BD::obtieneUsuario($usuario, $password));
-                        header("Location: includes/nav.php");
+                        header("Location: paginaInicio.php");
                     }
                 } else {
                     header("Location: loginUsuario.php");

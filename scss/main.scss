@@ -1,4 +1,10 @@
+body{
+    margin: 0;
+    padding: 0
+}
 
-@import 'base/funciones';
 @import 'base/variables';
+@import 'base/funciones';
+@import 'layout/contenido';
+@import 'layout/nav';
 @import 'components/formulario';

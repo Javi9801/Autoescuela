@@ -1,6 +1,118 @@
-form {
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.contenido {
   margin-top: 5%;
-  margin-left: 40%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.contenido h1 {
+  margin: 0;
+  font-size: 2.2em;
+  text-align: center;
+}
+
+@-webkit-keyframes iluminar {
+  from {
+    background-color: #FF7F50;
+    color: #eee;
+  }
+  to {
+    background-color: black;
+    color: #fff;
+  }
+}
+
+@keyframes iluminar {
+  from {
+    background-color: #FF7F50;
+    color: #eee;
+  }
+  to {
+    background-color: black;
+    color: #fff;
+  }
+}
+nav {
+  position: absolute;
+  width: 100%;
+  margin-left: 30px;
+}
+nav ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+nav ul .submenu {
+  transition: height, 0.5s, ease-out;
+  position: absolute;
+  height: 0px;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  width: 160px;
+  padding: 7px 20px;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  background-color: #FF7F50;
+  color: #eee;
+}
+
+a:hover {
+  background-color: black;
+  color: #fff;
+  -webkit-animation: iluminar, 0.4s, linear;
+          animation: iluminar, 0.4s, linear;
+}
+
+header {
+  margin-top: 10px;
+}
+header section {
+  height: 90px;
+  margin-left: 30px;
+}
+header section .derecha {
+  float: right;
+  margin-right: 30px;
+  width: 50px;
+  margin-top: 20px;
+}
+header section .perfil {
+  visibility: hidden;
+  float: right;
+  margin-top: 80px;
+}
+header section .perfil ul {
+  list-style-type: none;
+  padding: 0px;
+  background-color: #FF7F50;
+  color: #eee;
+}
+
+.categoria {
+  float: left;
+}
+.categoria > a {
+  transition: padding, 0.4s, ease-out;
+}
+
+.categoria:hover ul.submenu {
+  height: 100px;
+}
+
+.categoria:hover > a {
+  padding: 10px 20px;
+}
+
+form {
+  margin-top: 20px;
+  margin-left: 43%;
 }
 form section {
   margin-bottom: 5%;
@@ -8,4 +120,8 @@ form section {
 form span {
   visibility: hidden;
   color: red;
+}
+
+.login {
+  margin-top: 5%;
 }/*# sourceMappingURL=main.css.map */

@@ -30,7 +30,7 @@ class BD{
     }
 
     public static function obtieneUsuario($email,$password){
-        $res = self::$con->query("Select * from Autoescuela.usuario where email = '$email' and password = '$password");
+        $res = self::$con->query("Select * from Autoescuela.usuario where email = '$email' and password = '$password'");
 
 
         if($res != false){
@@ -142,7 +142,7 @@ class BD{
 
 
     public static function addRespuestas($r, $id){
-        $res = self::$con->prepare("Update autoescuela.pregunta set respuestas = :respuestas where id = :id)");
+        $res = self::$con->prepare("Update autoescuela.pregunta set 'respuestas' = :respuestas where 'id' = :id)");
 
         $res->bindParam(':respuestas',$r);
         $res->bindParam(':id',$id);

@@ -1,0 +1,95 @@
+@keyframes iluminar {
+    from {
+        @include estableceColores;
+    }
+    to {
+        @include estableceColoresHover;
+    }
+}
+
+
+
+
+nav{
+    position: absolute;
+    width: 100%;
+    margin-left: 30px;
+    
+
+    ul{
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
+
+        .submenu{
+            @include transiciones(height, 0.5s, ease-out);
+            position: absolute;
+            height: 0px;
+            overflow: hidden;
+
+        }
+    }
+    
+}
+
+a{
+    text-decoration: none;
+    width: 160px;
+    padding: 7px 20px;
+    display: block;
+    text-align: center;
+    cursor: pointer
+    ;@include estableceColores();
+
+}
+
+a:hover{
+    @include estableceColoresHover;
+    @include animaciones(iluminar, 0.4s, linear);
+}
+header{
+    margin-top: 10px;
+    section{
+        height: 90px;
+        margin-left: 30px;
+    
+        .derecha{
+            float: right;
+            margin-right: 30px;
+            width: 50px;
+            margin-top: 20px;
+        }
+
+        .perfil{
+            visibility: hidden;
+            float: right;
+            margin-top: 80px;
+
+            ul{
+                list-style-type: none;
+                padding: 0px;
+                @include estableceColores;
+            }
+
+
+        }
+    }
+}
+
+
+
+.categoria{
+    float: left;
+
+    >a{
+        @include transiciones (padding, 0.4s, ease-out);
+    }
+}
+
+.categoria:hover ul.submenu{
+    height: 100px;
+}
+
+.categoria:hover>a{
+    padding: 10px 20px;
+}

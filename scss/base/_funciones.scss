@@ -3,3 +3,21 @@
     visibility: hidden;
     color: $color_error;
 }
+
+@mixin transiciones($property, $duration, $timing){
+    transition: $property, $duration, $timing;
+}
+
+@mixin animaciones($name, $duration, $timing){
+    animation: $name, $duration, $timing;
+}
+
+@mixin estableceColores {
+    background-color: $color_fondo;
+    color: $color_texto;
+}
+
+@mixin estableceColoresHover {
+    background-color: $color_fondo_hover;
+    color: $color_texto_hover;
+}
