@@ -66,25 +66,23 @@ require_once("helpers/BD.php");
 require_once("entidades/respuesta.php");
 require_once("helpers/validacion.php");
 
-$enunciado = $_POST['pregunta_enunciado'];
-$tematica = BD::obtieneTematica($_POST['pregunta_tematica']);
+   
+    if(isset($_POST["pregunta_enviar"])){
+        BD::conecta();
+        $enunciado = $_POST['pregunta_enunciado'];
+        $tematica = BD::obtieneTematica($_POST['pregunta_tematica']);
 
-$validar = new Validacion();
-$validar->Requerido($enunciado);
-$validar->Requerido($tematica);
+        $validar = new Validacion();
+        $validar->Requerido($enunciado);
+        $validar->Requerido($tematica);
 
-for($i=1; $i<=4;$i++){
-    $validar->Requerido($_POST['pregunta_respuesta_'.$i.'']);
-}
-$validar->Requerido($_POST['opciones']);
+        for($i=1; $i<=4;$i++){
+            $validar->Requerido($_POST['pregunta_respuesta_'.$i.'']);
+        }
+        $validar->Requerido($_POST['opciones']);
+        $respuestas = array();
 
-
-    if($validar->ValidacionPasada()){
-        if(isset($_POST["pregunta_enviar"])){
-            BD::conecta();
-            $enunciado = $_POST['pregunta_enunciado'];
-            $tematica = BD::obtieneTematica($_POST['pregunta_tematica']);
-            $respuestas = array();
+        if($validar->ValidacionPasada()){
 
             $p = new Pregunta($enunciado,"imagen",$tematica);
             BD::altaPregunta($p);
