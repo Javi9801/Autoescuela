@@ -5,18 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
+
+
 <body>
 
     <form id="login_form" action="" method="POST">
+
+        <section>
+        <p><img src="recursos/logo.png"  width="200px" height="200px" alt=""></p>
+        </section>
+
         <label for="login_usuario">Usuario/Email</label>
-        <p><input type="text" id="login_email" name="login_email" value=""> <span class="error_login">Usuario Incorrecto</span></p>
+        <p><input type="text" id="login_email" name="login_email" value="" placeholder="Escriba aqui"> <span class="error_login">Usuario Incorrecto</span></p>
 
 
 
         <label for="login_contraseña">Contraseña</label>
-        <p><input type="password" id="login_contraseña" name="login_contraseña" value=""> <span class="error_login">Contraseña Incorrecto</span></p>
+        <p><input type="password" id="login_contraseña" name="login_contraseña" value="" placeholder="Escriba aqui"> <span class="error_login">Contraseña Incorrecto</span></p>
 
 
 
@@ -24,9 +31,11 @@
             <input type="submit" name="aceptar" id="aceptar" value="Aceptar">
             <input type="checkbox" name="recuerdame" id="recuerdame">Recuerdame
         </p>
+
+        <p><a href="#">¿Has olvidado tu contraseña?</a></p>
     </form>
 
-    <p><a href="#">¿Has olvidado tu contraseña?</a></p>
+
     <!-- <p><a href="altaUsuario.php">Nueva cuenta de usuario</a></p> -->
 </body>
 </html>
