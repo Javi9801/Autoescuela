@@ -75,19 +75,19 @@ if(isset($_POST["pregunta_enviar"])){
     for($i=1;$i<=4;$i++){
         $resp = new respuesta($_POST['pregunta_respuesta_'.$i.''], $p->id);
         $respuestas[] = $resp;
+        BD::altaRespuesta($resp);
 
         if($_POST['opciones'] == 'opcion'.$i.''){
             $correcta = new respuesta($_POST['pregunta_respuesta_'.$i.''],$p->id);
+            $correcta->id = BD::ultimoIdInsertado("autoescuela.respuesta");
         }
     }
 
     $p->respuestas = $respuestas;
 
-    BD::addRespuestas(json_encode(BD::obtieneRespuestasJSON()),$ultId);
 
-    foreach($respuestas as $i){
-      BD::altaRespuesta($i);
-    }
+    BD::addRespuestas(BD::obtieneRespuestasJSON($ultId),$ultId);
+
     BD::altaRespuestaCorrecta($p,$correcta);
 }
 ?>

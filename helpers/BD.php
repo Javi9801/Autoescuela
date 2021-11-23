@@ -185,10 +185,10 @@ class BD{
 
     //json que devuelve las respuestas
 
-    public static function obtieneRespuestasJSON(){
+    public static function obtieneRespuestasJSON($idPregunta){
         $ret = array();
 
-        $res = self::$con->query("Select * from autoescuela.respuesta");
+        $res = self::$con->query("Select * from autoescuela.respuesta where id_pregunta='$idPregunta'");
 
         $filas = $res->fetchAll(PDO::FETCH_ASSOC);
 

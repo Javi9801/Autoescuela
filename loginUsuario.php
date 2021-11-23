@@ -61,7 +61,7 @@
                 if(login::identifica($usuario, $password, false)){
                     if(login::usuarioEstaLogueado()){
                         sesion::escribir('usuario', BD::obtieneUsuario($usuario, $password));
-                        header("Location: historicoExamenes.php");
+                        header("Location: includes/nav.php");
                     }
                 } else {
                     header("Location: loginUsuario.php");

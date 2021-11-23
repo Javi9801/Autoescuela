@@ -2,9 +2,9 @@
 <header>
 
     <section>
-        <img src="recursos/logo.png" width="100px" alt="">
+        <img class="izquierda" src="../recursos/logo.png" width="100px" alt="">
 
-        <img src="recursos/logo.png" width="100px" alt="">
+        <img class="derecha" src="../recursos/logo.png" width="100px" alt="">
     </section>
 
     <nav>
@@ -20,7 +20,7 @@
             </ul>
             <li class="categoria"><a href="#">Preguntas</a></li>
             <ul class="submenu">
-                <li><a href="#">Alta Pregunta</a></li>
+                <li><a href="../altaPregunta.php">Alta Pregunta</a></li>
                 <li><a href="#">Alta Masiva Preguntas</a></li>
             </ul>
             <li class="categoria"><a href="#">Examenes</a></li>
