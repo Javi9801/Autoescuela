@@ -28,11 +28,11 @@
 
 
         <p>
-            <input type="submit" name="aceptar" id="aceptar" value="Aceptar">
             <input type="checkbox" name="recuerdame" id="recuerdame">Recuerdame
         </p>
 
         <p><a href="#">¿Has olvidado tu contraseña?</a></p>
+        <p><input type="submit" name="aceptar" id="aceptar" value="Aceptar"></p>
     </form>
 
 

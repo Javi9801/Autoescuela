@@ -129,7 +129,7 @@ class BD{
         $enunciado = $u->enunciado;
         $imagen = $u->imagen;
         $tematica = $u->tematica->id;
-        
+
 
         $res->bindParam(':enunciado',$enunciado);
         $res->bindParam(':imagen',$imagen);
@@ -137,15 +137,12 @@ class BD{
 
         $res->execute();
 
-       
+
     }
 
 
     public static function addRespuestas($r, $id){
         $res = self::$con->prepare("Update autoescuela.pregunta set respuestas = :respuestas where id = :id)");
-
-        //Inserto una pregunta, todavia sin el array de preguntas
-        
 
         $res->bindParam(':respuestas',$r);
         $res->bindParam(':id',$id);
@@ -169,6 +166,33 @@ class BD{
         $res->bindParam(':id_pregunta',$id_pregunta);
 
         $res->execute();
+
+    }
+
+    //json que devuelve las preguntas
+
+    public static function obtienePreguntasJSON(){
+        $ret = array();
+
+        $res = self::$con->query("Select * from autoescuela.pregunta");
+
+        $filas = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($filas);
+
+    }
+
+
+    //json que devuelve las respuestas
+
+    public static function obtieneRespuestasJSON(){
+        $ret = array();
+
+        $res = self::$con->query("Select * from autoescuela.respuesta");
+
+        $filas = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($filas);
 
     }
 
