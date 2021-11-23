@@ -59,43 +59,35 @@ require_once("entidades/respuesta.php");
 
 
 
-    if(isset($_POST["pregunta_enviar"])){
-        BD::conecta();
-        $enunciado = $_POST['pregunta_enunciado'];
-        $tematica = BD::obtieneTematica($_POST['pregunta_tematica']);
-        $enunciado = $_POST['pregunta_enunciado'];
-        $respuestas = array();
-        $r = array();
-        for($i=1;$i<=4;$i++){
-            $r[] = $_POST['pregunta_respuesta_'.$i.''];
+if(isset($_POST["pregunta_enviar"])){
+    BD::conecta();
+    $enunciado = $_POST['pregunta_enunciado'];
+    $tematica = BD::obtieneTematica($_POST['pregunta_tematica']);
+    $enunciado = $_POST['pregunta_enunciado'];
+    $respuestas = array();
 
-            if($_POST['opciones'] == 'opcion'.$i.''){
-                $correcta = $_POST['pregunta_respuesta_'.$i.''];
-            }
+    $p = new Pregunta($enunciado,"imagen",$tematica);
+    BD::altaPregunta($p);
+
+    $ultId = BD::ultimoIdInsertado("autoescuela.pregunta");
+    $p->id = $ultId;
+
+    for($i=1;$i<=4;$i++){
+        $resp = new respuesta($_POST['pregunta_respuesta_'.$i.''], $p->id);
+        $respuestas[] = $resp;
+
+        if($_POST['opciones'] == 'opcion'.$i.''){
+            $correcta = new respuesta($_POST['pregunta_respuesta_'.$i.''],$p->id);
         }
-
-        $p = new Pregunta($enunciado,"imagen",$tematica);
-        BD::altaPregunta($p);
-
-        $ultId = BD::ultimoIdInsertado("usuario");
-        $p->id = $ultId;
-
-        foreach($r as $i){
-            $resp = new respuesta($i->enunciado, $p->id);
-            $respuestas[] = $resp;
-
-        }
-
-        $p->respuestas = $respuestas;
-
-        foreach($respuestas as $i){
-          BD::altaRespuesta($i);
-        }
-
-        BD::addRespuestas(BD::obtieneRespuestasJSON,$ultId);
-
-        BD::altaRespuestaCorrecta($p,$correcta);
-
     }
 
+    $p->respuestas = $respuestas;
+
+    BD::addRespuestas(json_encode(BD::obtieneRespuestasJSON()),$ultId);
+
+    foreach($respuestas as $i){
+      BD::altaRespuesta($i);
+    }
+    BD::altaRespuestaCorrecta($p,$correcta);
+}
 ?>
