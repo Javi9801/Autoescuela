@@ -4,12 +4,12 @@ body {
 }
 
 .contenido {
-  margin-top: 10%;
+  margin-top: 6%;
   margin-left: 5px;
   margin-right: 20px;
 }
 .contenido h1 {
-  margin: 0;
+  margin-left: 10%;
   font-size: 2.2em;
 }
 
@@ -124,7 +124,7 @@ header section .perfil ul {
 
 form {
   margin-top: 20px;
-  margin-left: 40%;
+  margin-left: 35%;
 }
 form section {
   margin-bottom: 5%;

@@ -31,7 +31,7 @@ $u = sesion::leer('usuario');
             <li class="categoria">
                 <a href="#">Usuarios</a>
                 <ul class="submenu">
-                    <li><a href="inicio.php">Alta Usuario</a></li>
+                    <li><a href="altaUsuario.php">Alta Usuario</a></li>
                     <li><a href="inicio.php">Alta Masiva usuarios</a></li>
                 </ul>
             </li>
