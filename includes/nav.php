@@ -15,7 +15,7 @@ $u = sesion::leer('usuario');
         <img class="izquierda" src="recursos/logo.png" width="80px" alt="">
 
         <img class="derecha" src="recursos/perfil.png" width="100px" alt="">
-        
+
         <section class="perfil">
             <ul>
 
@@ -51,7 +51,7 @@ $u = sesion::leer('usuario');
 
             <li class="categoria"><a href="#">Examenes</a>
                 <ul class="submenu">
-                    <li><a href="#">Alta Examen</a></li>
+                    <li><a href="altaExamen.php">Alta Examen</a></li>
                     <li><a href="#">Historico</a></li>
                 </ul>
             </li>

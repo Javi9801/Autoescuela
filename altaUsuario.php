@@ -20,8 +20,8 @@
         <label for="usuario_apellidos">Apellidos</label>
         <p><input type="text" id="usuario_apellidos" name="usuario_apellidos" value=""></p>
 
-        <label for="usuario_contraseña">Contraseña</label>
-        <p><input type="password" id="usuario_contraseña" name="usuario_contraseña" value=""></p>
+        <!-- <label for="usuario_contraseña">Contraseña</label>
+        <p><input type="password" id="usuario_contraseña" name="usuario_contraseña" value=""></p> -->
 
         <label for="usuario_contraseña1">Confirmar Contraseña</label>
         <p><input type="password" id="usuario_contraseña1" name="usuario_contraseña1" value=""></p>
@@ -41,7 +41,12 @@
 <?php
 require_once("entidades/usuario.php");
 require_once("helpers/BD.php");
+require_once("helpers/sesion.php");
 
+sesion::iniciar();
+$u = sesion::leer('usuario');
+
+if($u->rol=1){
 
 
     if(isset($_POST["usuario_enviar"])){
@@ -58,5 +63,9 @@ require_once("helpers/BD.php");
 
         $u = new Usuario($email,$nombre,$apellidos,$password,$fecha_nacimiento,1,"jorge.png",1);
     }
+
+} else {
+    header("location: loginUsuario.php");
+}
 
 ?>

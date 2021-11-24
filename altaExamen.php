@@ -6,26 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/cargaPreguntasExamen.js"></script>
 </head>
 <body>
     <?php include ("includes/nav.php");?>
 
     <section class="contenido">
 
-    <h1>Alta Preguntas</h1>
-        <form action="altaExamen.php" method="POST">
+        <form action="altaExamen.php" class="form_examen" method="POST">
+        <h1>Examen/Alta Examen</h1>
 
-            <label for="pregunta_tematica">Tematica</label>
-           
+            <p>
+                <label for="descripcion_examen">Descripcion</label>
+                <input type="text" id="descripcion_examen" name="descripcion_examen" value="">
+                <label for="descripcion_examen">  Duracion</label>
+                <input type="text" id="duracion_examen" name="duracion_examen" value="">
 
+            </p>
 
-            <p><input type="submit" id="examen_enviar" name="examen_enviar" value="Guardar"></p>
+            <p><input type="submit" id="cargar_preguntas" name="cargar_preguntas" value="Cargar"></p>
 
         </form>
 
+
+        <section id="contenedor_preguntas" class="contenedorP">
+        </section>
+
+        <section id="contenedor_preguntas_examen" class="contenedorP"></section>
     </section>
 
-    
+
 </body>
 </html>
 

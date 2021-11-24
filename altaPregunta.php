@@ -26,26 +26,33 @@
             <label for="pregunta_enunciado">Enunciado</label>
             <p><textarea name="pregunta_enunciado" id="pregunta_enunciado" cols="30" rows="10"></textarea></p>
 
-            <label for="pregunta_respuesta_1">Opcion 1</label>
-            <p><input type="text" id="pregunta_respuesta_1" name="pregunta_respuesta_1" value="">
-            <input type="radio" id="opcion1" value="opcion1" name="opciones"> Correcta
+
+            <p>
+                <label for="pregunta_respuesta_1">Opcion 1 </label>
+                <input type="text" id="pregunta_respuesta_1" name="pregunta_respuesta_1" value="">
+                <input type="radio" id="opcion1" value="opcion1" name="opciones"> Correcta
             </p>
 
-            <label for="pregunta_respuesta_2">Opcion 2</label>
-            <p><input type="text" id="pregunta_respuesta_2" name="pregunta_respuesta_2" value="">
-            <input type="radio" id="opcion2" value="opcion2" name="opciones"> Correcta
+
+            <p>
+                <label for="pregunta_respuesta_2">Opcion 2 </label>
+                <input type="text" id="pregunta_respuesta_2" name="pregunta_respuesta_2" value="">
+                <input type="radio" id="opcion2" value="opcion2" name="opciones"> Correcta
 
             </p>
 
-            <label for="pregunta_respuesta_3">Opcion 3</label>
-            <p><input type="text" id="pregunta_respuesta_3" name="pregunta_respuesta_3" value="">
-            <input type="radio" id="opcion3" value="opcion3" name="opciones"> Correcta
+            <p>
+                <label for="pregunta_respuesta_3">Opcion 3 </label>
+                <input type="text" id="pregunta_respuesta_3" name="pregunta_respuesta_3" value="">
+                <input type="radio" id="opcion3" value="opcion3" name="opciones"> Correcta
 
             </p>
 
-            <label for="pregunta_respuesta_4">Opcion 4</label>
-            <p><input type="text" id="pregunta_respuesta_4" name="pregunta_respuesta_4" value="">
-            <input type="radio" id="opcion4" value="opcion4" name="opciones"> Correcta
+
+            <p>
+                <label for="pregunta_respuesta_4">Opcion 4</label>
+                <input type="text" id="pregunta_respuesta_4" name="pregunta_respuesta_4" value="">
+                <input type="radio" id="opcion4" value="opcion4" name="opciones"> Correcta
             </p>
 
 
@@ -56,7 +63,7 @@
 
     </section>
 
-    
+
 </body>
 </html>
 
@@ -66,7 +73,7 @@ require_once("helpers/BD.php");
 require_once("entidades/respuesta.php");
 require_once("helpers/validacion.php");
 
-   
+
     if(isset($_POST["pregunta_enviar"])){
         BD::conecta();
         $enunciado = $_POST['pregunta_enunciado'];
