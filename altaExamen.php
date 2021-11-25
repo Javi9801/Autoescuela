@@ -30,9 +30,13 @@
 
 
         <section id="contenedor_preguntas" class="contenedorP">
+        <h1>Preguntas</h1>
         </section>
 
-        <section id="contenedor_preguntas_examen" class="contenedorP"></section>
+        <section id="contenedor_preguntas_examen" class="contenedorP" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+        <h1>Contenedor</h1>
+        </section>
     </section>
 
 

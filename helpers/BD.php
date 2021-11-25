@@ -82,6 +82,42 @@ class BD{
         $res->execute();
     }
 
+    public static function altaUsuarioTemporal($id, $md5, $fecha){
+
+        $res = self::$con->prepare("Insert into autoescuela.comprobarUsuario values(:idUsuario, :md5, :fecha)");
+
+        $res->bindParam(':idUsuario',$id);
+        $res->bindParam(':md5',$md5);
+        $res->bindParam(':fecha',$fecha);
+        $res->execute();
+    }
+
+
+    public static function obtieneId($id){
+
+        $res = self::$con->query("Select * from Autoescuela.usuario where md5 = '$id'");
+
+        $cons = $res->fetch();
+        if($cons!=0){
+            return $cons[0];
+        }
+            return false;
+    }
+
+
+    public static function modificaUsuario($id, $password, $nombre = "", $apellido = ""){
+        $res = self::$con->prepare("Update autoescuela.usuario set 'password' = :password, 'nombre' = :nombre, 'apellidos' = :apellidos where 'id' = :id)");
+
+        $res->bindParam(':password',$password);
+        $res->bindParam(':nombre',$nombre);
+        $res->bindParam(':apellidos',$apellidos);
+        $res->bindParam(':id',$id);
+
+
+
+        $res->execute();
+    }
+
     // public static function bajaUsuario(usuario $u){
     //     $correo = $u->getCorreo();
 

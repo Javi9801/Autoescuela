@@ -25,14 +25,17 @@
             <label for="usuario_apellidos">Apellidos</label>
             <p><input type="text" id="usuario_apellidos" name="usuario_apellidos" value=""></p>
 
-        
-
             <label for="usuario_fecha">Fecha Nacimiento</label>
             <p><input type="date" id="usuario_fecha" name="usuario_fecha" value=""></p>
 
             <label for="usuario_imagen">Foto Usuario</label>
             <p><input type="file" id="usuario_imagen" name="usuario_imagen" value=""></p>
 
+            <label for="usuario_rol">Rol</label>
+            <?php
+                    require_once("helpers/funciones.php");
+                    echo(funciones::selectDinamico("usuario_rol", "rol"));
+                ?>
             <p><input type="submit" id="usuario_enviar" name="usuario_enviar" value="Aceptar"></p>
 
         </form>
@@ -44,20 +47,20 @@
 require_once("entidades/usuario.php");
 require_once("helpers/BD.php");
 require_once("helpers/sesion.php");
+require_once("helpers/correo.php");
 
 sesion::iniciar();
 $u = sesion::leer('usuario');
 
-if($u->rol=1){
+if($u->rol=="2"){
 
 
     if(isset($_POST["usuario_enviar"])){
         BD::conecta();
         $nombre = $_POST['usuario_nombre'];
         $email = $_POST['usuario_email'];
-        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
-        $password = substr(str_shuffle($permitted_chars), 0, 10);
 
+        $idRecuperar = md5(rand(1,5000000).date(DATE_RFC2822));
         // $password = d;
         // $rol = $_POST['rol'];
         $apellidos = $_POST['usuario_apellidos'];
@@ -66,11 +69,28 @@ if($u->rol=1){
         // $activo = $_POST['activo'];
 
 
-        $u = new Usuario($email,$nombre,$apellidos,$password,$fecha_nacimiento,1,"jorge.png",1);
+        $u = new Usuario($email,$nombre,$apellidos,$idRecuperar,$fecha_nacimiento,1,"jorge.png",1);
         BD::altaUsuario($u);
 
-        
+        $u->id = BD::ultimoIdInsertado("autoescuela.usuario");
 
+        BD::altaUsuarioTemporal($u->id, $password, date(DATE_RFC2822));
+
+        $html = '
+        <html>
+        <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Recuperar</title>
+        </head>
+        <body>
+
+        <h2>Enlace para loguearse</h2>
+        <a href="localhost/autoescuela/recuperarContraseña.php?id='.$password.'">Pulse aqui para recuperar la contraseña</a>
+        </body>
+        </html>';
+
+        correo::envia("javijd23@gmail.com", "dmbaloncesto10", "Recupera tu contraseña", "Recuperar", $html, $u->correo);
+        //Falta comprobar si ha caducado
 
 
     }

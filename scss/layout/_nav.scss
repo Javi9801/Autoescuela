@@ -11,14 +11,16 @@
 
 
 nav{
-    position: absolute;
+    position: sticky;
     width: 100%;
+
 
 
     ul{
         list-style-type: none;
         padding: 0px;
         margin: 0px;
+
 
         .submenu{
             @include transiciones(height, 0.5s, ease-out);
@@ -37,8 +39,9 @@ a{
     padding: 7px 20px;
     display: block;
     text-align: center;
-    cursor: pointer
-    ;@include estableceColores();
+    cursor: pointer;
+    font-size: 1.2em;
+    @include estableceColores();
 
 }
 
@@ -55,8 +58,8 @@ header{
         .derecha{
             float: right;
             margin-right: 30px;
-            width: 50px;
             margin-top: 20px;
+            width: 40px;
         }
 
         .perfil{
