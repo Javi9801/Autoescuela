@@ -58,7 +58,7 @@ class BD{
 
     public static function altaUsuario(usuario $u){
 
-        $res = self::$con->prepare("Insert into autoescuela.usuario values(default, :email, :nombre, :apellidos, :password, :fecha_nacimiento, :rol, :foto, :activo)");
+        $res = self::$con->prepare("Insert into autoescuela.usuario values (default, :email, :nombre, :apellidos, :password, :fecha_nacimiento, :rol, :foto, :activo)");
 
         $nombre = $u->nombre;
         $email = $u->email;

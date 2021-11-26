@@ -12,9 +12,11 @@
     <?php include ("includes/nav.php");?>
 
     <section class="contenido">
+    
+       
+        <form action="altaUsuario.php" method="POST">
 
         <h1>Alta Usuario</h1>
-        <form action="altaUsuario.php" method="POST">
 
             <label for="usuario_email">Email</label>
             <p><input type="email" id="usuario_email" name="usuario_email" value=""></p>
@@ -69,12 +71,12 @@ if($u->rol=="2"){
         // $activo = $_POST['activo'];
 
 
-        $u = new Usuario($email,$nombre,$apellidos,$idRecuperar,$fecha_nacimiento,1,"jorge.png",1);
-        BD::altaUsuario($u);
+        $p = new Usuario($email,$nombre,$apellidos,$idRecuperar,$fecha_nacimiento,1,"jorge.png",1);
+        BD::altaUsuario($p);
 
-        $u->id = BD::ultimoIdInsertado("autoescuela.usuario");
+        $p->id = BD::ultimoIdInsertado("autoescuela.usuario");
 
-        BD::altaUsuarioTemporal($u->id, $password, date(DATE_RFC2822));
+        BD::altaUsuarioTemporal($p->id, $idRecuperar, date(DATE_RFC2822));
 
         $html = '
         <html>
@@ -85,11 +87,11 @@ if($u->rol=="2"){
         <body>
 
         <h2>Enlace para loguearse</h2>
-        <a href="localhost/autoescuela/recuperarContraseña.php?id='.$password.'">Pulse aqui para recuperar la contraseña</a>
+        <a href="localhost/autoescuela/recuperarContraseña.php?id='.$idRecuperar.'">Pulse aqui para recuperar la contraseña</a>
         </body>
         </html>';
 
-        correo::envia("javijd23@gmail.com", "dmbaloncesto10", "Recupera tu contraseña", "Recuperar", $html, $u->correo);
+        correo::envia("javijd23@gmail.com", "dmbaloncesto10", "Recupera tu contraseña", "Recuperar", $html, $p->correo);
         //Falta comprobar si ha caducado
 
 

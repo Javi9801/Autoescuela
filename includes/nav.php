@@ -85,12 +85,13 @@ if($u->rol == "2"){
 
 <nav>
     <ul>
-        <li class="categoria"><a href="#">Examenes</a>
-            <ul class="submenu">
-                <li><a href="altaExamen.php">Hacer examen</a></li>
-                <li><a href="#">Historico</a></li>
-            </ul>
+        <li class="categoria"><a href="#">Historico Examenes</a>
         </li>
+        <li class="categoria"><a href="#">Examen aleatorio</a>
+        </li>
+        <li class="categoria"><a href="#">Examen</a>
+        </li>
+    
     </ul>
 </nav>
 </header>

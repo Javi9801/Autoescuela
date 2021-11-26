@@ -1,0 +1,29 @@
+@keyframes iluminar {
+    from {
+        background-color: grey;
+    }
+    to {
+        background-color: $color_fondo;
+    }
+}
+
+
+.btn_enviar{
+    width: 150px;
+    height: 40px;
+    margin-left: 25%;
+    margin-top: 10%;
+    border-radius: 20px;
+
+    
+}
+
+.inputs{
+    height: 40px;
+    width: 100%;
+}
+
+.btn_enviar:hover{
+    @include animaciones(botones, 0.4s, linear);
+    background-color: $color_fondo;
+}
