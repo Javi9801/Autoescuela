@@ -6,7 +6,7 @@ require "vendor/autoload.php";
 class correo{
     private static $mail;
 
-    private function estableceClase(){
+    private static function estableceClase(){
         self::$mail = new PHPMailer();
         self::$mail->IsSMTP();
         self::$mail->SMTPDebug  = 2;
@@ -21,27 +21,26 @@ class correo{
         self::estableceClase();
 
         // introducir usuario de google
-        $mail->Username   = $usuario;
+        self::$mail->Username   = $usuario;
         // introducir clave
-        $mail->Password   = $password;
-        $mail->SetFrom($usuario, $titulo);
+        self::$mail->Password   = $password;
+        self::$mail->SetFrom($usuario, $titulo);
         // asunto
-        $mail->Subject = $asunto;
+        self::$mail->Subject = $asunto;
         // cuerpo
-        $mail->MsgHTML($html);
+        self::$mail->MsgHTML($html);
         // adjuntos
-        $mail->AddEmbeddedImage($adjuntos, 'archivo');// destinatario
+        self::$mail->AddEmbeddedImage($adjuntos, 'archivo');// destinatario
 
-        $address = $direccion;
-        $mail->AddAddress($address, "Test");
+        self::$mail->AddAddress($direccion, "Test");
         // enviar
-        $resul = $mail->Send();
+        $resul = self::$mail->Send();
 
-        if(!$resul) {
-            echo "Error" . $mail->ErrorInfo;
-            } else {
-            echo "Enviado";
-        }
+        // if($resul) {
+        //     echo "Error" . self::$mail->ErrorInfo;
+        //     } else {
+        //     echo "Enviado";
+        // }
 
     }
 }

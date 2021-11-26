@@ -1,8 +1,7 @@
 <?php
-  require_once("helpers/sesion.php");
-  require_once("helpers/BD.php");
-  require_once("helpers/login.php");
-
+require_once("cargadores/cargarHelper.php");
+require_once("cargadores/cargarEntidades.php");
+require_once("cargadores/cargarIncludes.php");
 sesion::iniciar();
 BD::conecta();
 

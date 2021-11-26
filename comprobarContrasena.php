@@ -1,11 +1,10 @@
 <?php
-require_once("entidades/usuario.php");
-require_once("helpers/BD.php");
-require_once("helpers/sesion.php");
-require_once("helpers/correo.php");
+require_once("cargadores/cargarHelper.php");
+require_once("cargadores/cargarEntidades.php");
+
 
 BD::conecta();
-
+var_dump($_GET['id']);
 if(isset($_GET['id'])){
     $idUsuario = BD::obtieneID($_GET['id']);
     if($idUsuario!=false){

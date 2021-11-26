@@ -12,6 +12,18 @@ var preguntas_examen = document.getElementById("contenedor_preguntas_examen");
             pintaDatos(datos);
         });
 
+
+        preguntas_examen.ondragover = function(ev){
+            ev.preventDefault();
+        }
+
+        preguntas_examen.ondrop = function(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+
+
     }
 
     function pintaDatos(datos){
@@ -25,7 +37,7 @@ var preguntas_examen = document.getElementById("contenedor_preguntas_examen");
             d.setAttribute("dragable", true);
             //d.setAttribute("ondragstart", drag(event));
 
-            d.ondrag = function(ev){
+            d.ondragstart = function(ev){
                 ev.dataTransfer.setData("text", ev.target.id);
             };
 
@@ -33,17 +45,6 @@ var preguntas_examen = document.getElementById("contenedor_preguntas_examen");
 
         }
     }
-
-    preguntas_examen.allowDrop = function(ev){
-        ev.preventDefault();
-    }
-
-    preguntas_examen.drop = function(ev) {
-        ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
-        ev.target.appendChild(document.getElementById(data));
-    }
-
 })
 
 

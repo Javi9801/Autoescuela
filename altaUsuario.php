@@ -12,8 +12,8 @@
     <?php include ("includes/nav.php");?>
 
     <section class="contenido">
-    
-       
+
+
         <form action="altaUsuario.php" method="POST">
 
         <h1>Alta Usuario</h1>
@@ -46,10 +46,9 @@
 </html>
 
 <?php
-require_once("entidades/usuario.php");
-require_once("helpers/BD.php");
-require_once("helpers/sesion.php");
-require_once("helpers/correo.php");
+require_once("cargadores/cargarHelper.php");
+require_once("cargadores/cargarEntidades.php");
+require_once("cargadores/cargarIncludes.php");
 
 sesion::iniciar();
 $u = sesion::leer('usuario');
@@ -87,11 +86,11 @@ if($u->rol=="2"){
         <body>
 
         <h2>Enlace para loguearse</h2>
-        <a href="localhost/autoescuela/recuperarContraseña.php?id='.$idRecuperar.'">Pulse aqui para recuperar la contraseña</a>
+        <a href="localhost/autoescuela/comprobarContrasena.php?id='.$idRecuperar.'">Pulse aqui para recuperar la contraseña</a>
         </body>
         </html>';
 
-        correo::envia("javijd23@gmail.com", "dmbaloncesto10", "Recupera tu contraseña", "Recuperar", $html, $p->correo);
+        correo::enviar("javijd23@gmail.com", "dmbaloncesto10", "Recupera tu password", "Recuperar", $html, $p->email, "recursos/perfil.png");
         //Falta comprobar si ha caducado
 
 

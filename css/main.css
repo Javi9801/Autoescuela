@@ -123,10 +123,6 @@ header section .perfil ul {
 #contenedor_preguntas div {
   border-bottom: 1px solid black;
   padding: 5px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
 }
 
 #contenedor_preguntas_examen {
@@ -165,7 +161,7 @@ form span {
 }
 
 .login {
-  margin-top: 5%;
+  margin-top: 2%;
   width: 350px;
   height: 350px;
   background-color: white;

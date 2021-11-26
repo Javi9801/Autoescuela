@@ -32,4 +32,14 @@ class Funciones{
 
         return $select;
     }
+
+    public static function pintaTabla($tabla){
+
+        $json = BD::obtieneJSON_Tabla($tabla);
+        $ncolumnas = BD::obtieneNumColumnas($tabla);
+
+
+
+    }
+
 }

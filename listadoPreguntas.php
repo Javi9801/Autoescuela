@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,8 +12,8 @@
 
     <section class="contenido">
 
-        <form action="altaExamen.php" class="form_examen" method="POST">
-        <h1>Examen/Alta Examen</h1>
+        <form action="listadoPreguntas.php" class="form_listado_preguntas" method="POST">
+        <h1>Listado Preguntas</h1>
 
             <p>
                 <label for="descripcion_examen">Descripcion</label>
@@ -46,38 +45,3 @@
 <?php
 require_once("cargadores/cargarHelper.php");
 require_once("cargadores/cargarEntidades.php");
-require_once("cargadores/cargarIncludes.php");
-
-
-if(isset($_POST["examen_enviar"])){
-    BD::conecta();
-    $enunciado = $_POST['pregunta_enunciado'];
-    $tematica = BD::obtieneTematica($_POST['pregunta_tematica']);
-    $enunciado = $_POST['pregunta_enunciado'];
-    $respuestas = array();
-
-    $p = new Pregunta($enunciado,"imagen",$tematica);
-    BD::altaPregunta($p);
-
-    $ultId = BD::ultimoIdInsertado("autoescuela.pregunta");
-    $p->id = $ultId;
-
-    for($i=1;$i<=4;$i++){
-        $resp = new respuesta($_POST['pregunta_respuesta_'.$i.''], $p->id);
-        $respuestas[] = $resp;
-        BD::altaRespuesta($resp);
-
-        if($_POST['opciones'] == 'opcion'.$i.''){
-            $correcta = new respuesta($_POST['pregunta_respuesta_'.$i.''],$p->id);
-            $correcta->id = BD::ultimoIdInsertado("autoescuela.respuesta");
-        }
-    }
-
-    $p->respuestas = $respuestas;
-
-
-    // BD::addRespuestas(BD::obtieneRespuestasJSON($ultId),$ultId);
-
-    BD::altaRespuestaCorrecta($p,$correcta);
-}
-?>

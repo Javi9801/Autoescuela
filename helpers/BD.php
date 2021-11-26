@@ -219,19 +219,6 @@ class BD{
     }
 
 
-    //json que devuelve las respuestas
-
-    public static function obtieneRespuestasJSON($idPregunta){
-        $ret = array();
-
-        $res = self::$con->query("Select * from autoescuela.respuesta where id_pregunta='$idPregunta'");
-
-        $filas = $res->fetchAll(PDO::FETCH_ASSOC);
-
-        return json_encode($filas);
-
-    }
-
     //Metodo que inserta en la tabla pregunta-respuesta
 
     public static function altaRespuestaCorrecta(pregunta $p,respuesta $r){
@@ -250,6 +237,27 @@ class BD{
 
     public static function ultimoIdInsertado($tabla){
         $res = self::$con->query("select id from $tabla order by id desc limit 0,1");
+
+        if($res != false){
+            $registro = $res->fetchColumn();
+            return (int)$registro;
+        }
+    }
+
+    public static function obtieneJSON_Tabla($tabla){
+        $ret = array();
+
+        $res = self::$con->query("Select * from autoescuela.$tabla");
+
+        $filas = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($filas);
+    }
+
+    public static function obtieneNumColumnas($tabla){
+        $ret = array();
+
+        $res = self::$con->query("SELECT count(*) FROM information_schema.columns WHERE table_schema = 'autoescuela' AND table_name = '$tabla'");
 
         if($res != false){
             $registro = $res->fetchColumn();

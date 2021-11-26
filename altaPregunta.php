@@ -12,9 +12,10 @@
 
     <section class="contenido">
 
-    <h1>Alta Preguntas</h1>
+
         <form action="altaPregunta.php" method="POST">
 
+        <h1>Alta Preguntas</h1>
             <label for="pregunta_tematica">Tematica</label>
             <p>
                 <?php
@@ -68,10 +69,9 @@
 </html>
 
 <?php
-require_once("entidades/pregunta.php");
-require_once("helpers/BD.php");
-require_once("entidades/respuesta.php");
-require_once("helpers/validacion.php");
+require_once("cargadores/cargarHelper.php");
+require_once("cargadores/cargarEntidades.php");
+require_once("cargadores/cargarIncludes.php");
 
 
     if(isset($_POST["pregunta_enviar"])){
