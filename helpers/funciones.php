@@ -33,13 +33,34 @@ class Funciones{
         return $select;
     }
 
-    public static function pintaTabla($tabla){
+    public static function pintaTabla($tabla, $columnas){
 
         $json = BD::obtieneJSON_Tabla($tabla);
-        $ncolumnas = BD::obtieneNumColumnas($tabla);
+
+        $vector = json_decode($json);
+
+        $html = '<table>';
 
 
+        foreach($columnas as $i){
+            $html+='<tr>
+            <th>'.$i[0].'</th>';
 
+        }
+        $html+='</tr>';
+
+
+        foreach($vector as $i){
+            $html+='<tr>
+                <td>'.$i['id'].'</td>
+                <td>'.$i['enunciado'].'</td>
+                <td>'.$i['tematica'].'</td>
+                </tr>';
+        }
+
+        $html+='</tr>';
+
+        return $html;
     }
 
 }

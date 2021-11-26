@@ -247,11 +247,12 @@ class BD{
     public static function obtieneJSON_Tabla($tabla){
         $ret = array();
 
-        $res = self::$con->query("Select * from autoescuela.$tabla");
+        $res = self::$con->query("Select * from $tabla");
 
-        $filas = $res->fetchAll(PDO::FETCH_ASSOC);
-
-        return json_encode($filas);
+        if($res!=null){
+            $filas = $res->fetchAll(PDO::FETCH_ASSOC);
+            return json_encode($filas);
+        }
     }
 
     public static function obtieneNumColumnas($tabla){
