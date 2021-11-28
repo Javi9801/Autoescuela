@@ -18,13 +18,41 @@ require_once("cargadores/cargarEntidades.php");
     <section class="contenido">
 
 
-        <h1>Listado Preguntas</h1>
+        <h1 class="h1_preguntas">Listado Preguntas</h1>
 
 
         <?php
+
+        if(isset($_GET['pag'])){
+            $pag = $_GET['pag'];
+            $total = 5*$pag;
+        } else {
+            $pag = 0;
+            $total = 0;
+        }
+
+
+
+
         BD::conecta();
         $cabeceras = array("Id","Enunciado", "Tematica");
-        echo Funciones::pintaTabla("Autoescuela.pregunta", $cabeceras)?>;
+       
+        echo Funciones::pintaTabla("Autoescuela.pregunta", $cabeceras, $total, 5);
+
+        $registros = BD::obtienefilas("Autoescuela.pregunta");
+        $enlace = '<p>';
+        $aux = round($registros/5);
+        for($i=0; $i<$aux;$i++){
+            $enlace.="<a href='listadoPreguntas.php?pag=$i'>$i</a>";
+        }
+        
+      
+        $enlace.= '</p>';
+
+        echo $enlace;
+        ?>
+
+        
 
 </body>
 </html>

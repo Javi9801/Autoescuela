@@ -12,7 +12,7 @@ if($u->rol == "2"){
     <header>
 
         <section>
-            <img class="izquierda" src="recursos/logo.png" width="120px" alt="">
+            <img class="izquierda" src="recursos/logo.png" width="120px" height="80px" alt="">
 
             <img class="derecha" src="recursos/perfil.png" width="100px" alt="">
 
@@ -42,7 +42,7 @@ if($u->rol == "2"){
                     </ul>
                 </li>
 
-                <li class="categoria"><a href="listadoPreguntas.php">Preguntas</a>
+                <li class="categoria"><a href="listadoPreguntas.php?pag=0">Preguntas</a>
                     <ul class="submenu">
                         <li><a href="altaPregunta.php">Alta Pregunta</a></li>
                         <li><a href="#">Alta Masiva Preguntas</a></li>

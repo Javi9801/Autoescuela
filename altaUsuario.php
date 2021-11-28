@@ -76,7 +76,7 @@ if($u->rol=="2"){
 
         $p->id = BD::ultimoIdInsertado("autoescuela.usuario");
 
-        BD::altaUsuarioTemporal($p->id, $idRecuperar, date(DATE_RFC2822));
+        BD::altaUsuarioTemporal((int)$p->id, $idRecuperar, date(DATE_RFC2822));
 
         $html = '
         <html>

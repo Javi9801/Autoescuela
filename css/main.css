@@ -8,6 +8,7 @@ body {
   margin-top: 10%;
   margin-left: 5px;
   margin-right: 20px;
+  margin-bottom: 10%;
 }
 
 @-webkit-keyframes iluminar {
@@ -114,6 +115,35 @@ footer {
   height: 30%;
   margin-left: 6%;
   float: left;
+}
+
+.tabla {
+  width: 100%;
+  border: 1px solid #000;
+  font-size: 2em;
+  background-color: white;
+}
+.tabla th, .tabla td {
+  width: 25%;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid #000;
+  border-collapse: collapse;
+  padding: 0.3em;
+  caption-side: bottom;
+}
+.tabla caption {
+  padding: 0.3em;
+  color: #fff;
+  background: #000;
+}
+.tabla th {
+  background: #50C15D;
+}
+
+.h1_preguntas {
+  text-align: center;
+  font-size: 3em;
 }
 
 .contenedorP {

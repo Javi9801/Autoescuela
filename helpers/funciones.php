@@ -33,32 +33,32 @@ class Funciones{
         return $select;
     }
 
-    public static function pintaTabla($tabla, $columnas){
+    public static function pintaTabla($tabla, $columnas, $pag, $limit){
 
-        $json = BD::obtieneJSON_Tabla($tabla);
+        $json = BD::obtieneJSON_Tabla($tabla, $pag, 5);
 
-        $vector = json_decode($json);
+        $vector = json_decode($json, true);
 
-        $html = '<table>';
+        $html = '<table class="tabla">
+        <tr>';
 
 
         foreach($columnas as $i){
-            $html+='<tr>
-            <th>'.$i[0].'</th>';
+            $html.='<th>'.$i.'</th>';
 
         }
-        $html+='</tr>';
+        $html.='</tr>';
 
 
         foreach($vector as $i){
-            $html+='<tr>
+            $html.='<tr>
                 <td>'.$i['id'].'</td>
                 <td>'.$i['enunciado'].'</td>
-                <td>'.$i['tematica'].'</td>
+                <td>'.BD::obtieneTematica($i['tematica'])->descripcion.'</td>
                 </tr>';
         }
 
-        $html+='</tr>';
+        $html.='</tr>';
 
         return $html;
     }

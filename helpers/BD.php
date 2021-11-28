@@ -82,35 +82,41 @@ class BD{
         $res->execute();
     }
 
-    public static function altaUsuarioTemporal($id, $md5, $fecha){
+    public static function altaUsuarioTemporal($id, $md5){
 
-        $res = self::$con->prepare("Insert into autoescuela.comprobarUsuario values(:idUsuario, :md5, :fecha)");
+        $res = self::$con->prepare("Insert into autoescuela.comprobarUsuario values(:idUsuario, :md5, Now())");
 
         $res->bindParam(':idUsuario',$id);
         $res->bindParam(':md5',$md5);
-        $res->bindParam(':fecha',$fecha);
         $res->execute();
     }
 
 
     public static function obtieneId($id){
 
-        $res = self::$con->query("Select * from Autoescuela.usuario where md5 = '$id'");
-
-        $cons = $res->fetch();
-        if($cons!=0){
-            return $cons[0];
+        $res = self::$con->query("Select * from Autoescuela.usuario where password = '$id'");
+        if($res!=false){
+            $registro = $res->fetch();
+            $u = new usuario($registro['email'],$registro['nombre'],$registro['apellidos'],$registro['password'],$registro['fecha_nacimiento'],$registro['rol'],$registro['foto'],$registro['activo']);
+            $u->id = $registro['id'];
+            return $u;
         }
             return false;
     }
 
+    public static function borraUsuarioTemporal($md5){
+        $res = self::$con->prepare("Delete from Autoescuela.comprobarUsuario where md5 = '$md5'");
+        $res->bindParam(':md5',$md5);
+        $res->execute();
+    }
 
-    public static function modificaUsuario($id, $password, $nombre = "", $apellido = ""){
-        $res = self::$con->prepare("Update autoescuela.usuario set 'password' = :password, 'nombre' = :nombre, 'apellidos' = :apellidos where 'id' = :id)");
+
+    public static function modificaUsuario($id, $password, $nombre, $apellido){
+        $res = self::$con->prepare("Update `usuario` set `password` = :password, `nombre` = :nombre, `apellidos` = :apellidos where `id` = :id)");
 
         $res->bindParam(':password',$password);
         $res->bindParam(':nombre',$nombre);
-        $res->bindParam(':apellidos',$apellidos);
+        $res->bindParam(':apellidos',$apellido);
         $res->bindParam(':id',$id);
 
 
@@ -244,10 +250,10 @@ class BD{
         }
     }
 
-    public static function obtieneJSON_Tabla($tabla){
+    public static function obtieneJSON_Tabla($tabla,$pag, $limit){
         $ret = array();
 
-        $res = self::$con->query("Select * from $tabla");
+        $res = self::$con->query("Select * from $tabla limit $limit offset $pag");
 
         if($res!=null){
             $filas = $res->fetchAll(PDO::FETCH_ASSOC);
@@ -259,6 +265,17 @@ class BD{
         $ret = array();
 
         $res = self::$con->query("SELECT count(*) FROM information_schema.columns WHERE table_schema = 'autoescuela' AND table_name = '$tabla'");
+
+        if($res != false){
+            $registro = $res->fetchColumn();
+            return (int)$registro;
+        }
+    }
+
+    public static function obtienefilas($tabla){
+        $ret = array();
+
+        $res = self::$con->query("SELECT count(*) FROM $tabla");
 
         if($res != false){
             $registro = $res->fetchColumn();
