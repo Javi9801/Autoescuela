@@ -58,7 +58,7 @@
 
 
 
-            <p><input type="submit" id="pregunta_enviar" name="pregunta_enviar" value="Aceptar"></p>
+            <p><input type="submit" id="pregunta_enviar" name="pregunta_enviar" class="btn_form" value="Aceptar"></p>
 
         </form>
 

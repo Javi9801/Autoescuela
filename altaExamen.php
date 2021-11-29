@@ -22,21 +22,27 @@
                 <label for="descripcion_examen">  Duracion</label>
                 <input type="text" id="duracion_examen" name="duracion_examen" value="">
 
+                <input type="submit" id="enviar_examen" namae="enviar_examen" class="btn_examen" value="Enviar Examen">
             </p>
 
             <p><input type="submit" id="cargar_preguntas" name="cargar_preguntas" value="Cargar"></p>
 
+            <section id="contenedor_preguntas" class="contenedorP">
+            <h1>Preguntas</h1>
+            </section>
+
+
+                <img class="central" src="recursos/flechas.jpg" width="100px" alt="">
+
+            <section id="contenedor_preguntas_examen" class="contenedorP">
+
+            <h1>Contenedor</h1>
+            </section>
+
         </form>
 
 
-        <section id="contenedor_preguntas" class="contenedorP">
-        <h1>Preguntas</h1>
-        </section>
 
-        <section id="contenedor_preguntas_examen" class="contenedorP">
-
-        <h1>Contenedor</h1>
-        </section>
     </section>
 
     <?php include ("includes/footer.php");?>

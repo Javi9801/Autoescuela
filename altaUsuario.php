@@ -38,7 +38,7 @@
                     require_once("helpers/funciones.php");
                     echo(funciones::selectDinamico("usuario_rol", "rol"));
                 ?>
-            <p><input type="submit" id="usuario_enviar" name="usuario_enviar" value="Aceptar"></p>
+            <p><input type="submit" id="usuario_enviar" name="usuario_enviar" class="btn_form" value="Aceptar"></p>
 
         </form>
 </section>
