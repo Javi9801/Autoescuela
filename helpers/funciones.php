@@ -1,6 +1,6 @@
 <?php
 require_once("BD.php");
-require_once("../entidades/tematica.php");
+require_once("./entidades/tematica.php");
 class Funciones{
     public static function validarLogin($var1, $var2){
         $errores = [];

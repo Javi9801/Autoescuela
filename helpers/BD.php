@@ -1,7 +1,7 @@
 <?php
-require_once('../entidades/usuario.php');
-require_once('../entidades/respuesta.php');
-require_once('../entidades/tematica.php');
+require_once('./entidades/usuario.php');
+require_once('./entidades/respuesta.php');
+require_once('./entidades/tematica.php');
 
 class BD{
     private static $con;

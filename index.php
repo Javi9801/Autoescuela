@@ -5,7 +5,7 @@ require_once("cargadores/cargarIncludes.php");
 
 sesion::iniciar();
 if(!sesion::existe("login")){
-    header("Location: formularios/loginUsuario.php");
+    header("Location: loginUsuario.php");
 }
 
 ?>
@@ -20,8 +20,8 @@ if(!sesion::existe("login")){
     <title>Document</title>
 </head>
 <body>
-    <?php include ("../includes/nav.php");?>
+    <?php include ("includes/nav.php");?>
 
-    <?php include ("../includes/footer.php");?>
+    <?php include ("includes/footer.php");?>
 </body>
 </html>

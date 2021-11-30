@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
-    <?php include ("../includes/nav.php");?>
+    <?php include ("includes/nav.php");?>
 
     <section class="contenido">
 
@@ -35,21 +35,21 @@
 
             <label for="usuario_rol">Rol</label>
             <?php
-                    require_once("../helpers/funciones.php");
+                    require_once("helpers/funciones.php");
                     echo(funciones::selectDinamico("usuario_rol", "rol"));
                 ?>
             <p><input type="submit" id="usuario_enviar" name="usuario_enviar" class="btn_form" value="Aceptar"></p>
 
         </form>
 </section>
-<?php include ("../includes/footer.php");?>
+<?php include ("includes/footer.php");?>
 </body>
 </html>
 
 <?php
-require_once("../cargadores/cargarHelper.php");
-require_once("../cargadores/cargarEntidades.php");
-require_once("../cargadores/cargarIncludes.php");
+require_once("cargadores/cargarHelper.php");
+require_once("cargadores/cargarEntidades.php");
+require_once("cargadores/cargarIncludes.php");
 
 sesion::iniciar();
 $u = sesion::leer('usuario');
