@@ -1,5 +1,5 @@
 <?php
-require_once("./entidades/usuario.php");
+require_once("../entidades/usuario.php");
 
 class Sesion{
     public static function iniciar(){

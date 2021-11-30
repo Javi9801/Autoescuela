@@ -120,8 +120,9 @@ footer {
 .tabla {
   width: 100%;
   border: 1px solid #000;
-  font-size: 2em;
+  font-size: 1.5em;
   background-color: white;
+  margin-left: 5px;
 }
 .tabla th, .tabla td {
   width: 25%;
@@ -283,4 +284,15 @@ form span {
   -webkit-animation: botones, 0.4s, linear;
           animation: botones, 0.4s, linear;
   background-color: #50C15D;
+}
+
+.paginador {
+  text-align: center;
+  font-size: 1.8em;
+  width: 50%;
+  margin-left: 20%;
+}
+.paginador a {
+  padding: 5px;
+  text-decoration: none;
 }/*# sourceMappingURL=main.css.map */

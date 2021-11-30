@@ -1,6 +1,6 @@
 <?php
 require_once("BD.php");
-require_once("./entidades/tematica.php");
+require_once("../entidades/tematica.php");
 class Funciones{
     public static function validarLogin($var1, $var2){
         $errores = [];
@@ -35,12 +35,11 @@ class Funciones{
 
     public static function pintaTabla($tabla, $columnas, $pag, $limit){
 
-        $json = BD::obtieneJSON_Tabla($tabla, $pag, 5);
+        $json = BD::obtieneJSON_Tabla($tabla, $pag, 4);
 
         $vector = json_decode($json, true);
 
-        $html = '<table class="tabla">
-        <tr>';
+        $html = '<table class="tabla"><tr>';
 
 
         foreach($columnas as $i){
@@ -51,14 +50,14 @@ class Funciones{
 
 
         foreach($vector as $i){
-            $html.='<tr>
-                <td>'.$i['id'].'</td>
-                <td>'.$i['enunciado'].'</td>
-                <td>'.BD::obtieneTematica($i['tematica'])->descripcion.'</td>
-                </tr>';
-        }
+            $html.='<tr>';
+            $html.='<td>'.$i['id'].'</td>';
+            $html.='<td>'.$i['enunciado'].'</td>';
+            $html.='<td>'.BD::obtieneTematica($i['tematica'])->descripcion.'</td>';
+            $html.='</tr>';
+            }
 
-        $html.='</tr>';
+            $html.='</table>';
 
         return $html;
     }

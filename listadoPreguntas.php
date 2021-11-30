@@ -1,7 +1,3 @@
-<?php
-require_once("cargadores/cargarHelper.php");
-require_once("cargadores/cargarEntidades.php");
-?>
 
 <html lang="en">
 <head>
@@ -22,13 +18,24 @@ require_once("cargadores/cargarEntidades.php");
 
 
         <?php
+        require_once("cargadores/cargarHelper.php");
+        require_once("cargadores/cargarEntidades.php");
 
         if(isset($_GET['pag'])){
             $pag = $_GET['pag'];
-            $total = 5*$pag;
+            $total = 4*$pag;
+            $menos1=$pag-1;
+            if($pag==0){
+                $menos1 = $pag;
+            }
+            $mas1 = $pag+1;
+
+
         } else {
             $pag = 0;
             $total = 0;
+            $menos1 = $pag-1;
+            $mas1 = $pag+1;
         }
 
 
@@ -37,22 +44,30 @@ require_once("cargadores/cargarEntidades.php");
         BD::conecta();
         $cabeceras = array("Id","Enunciado", "Tematica");
 
-        echo Funciones::pintaTabla("Autoescuela.pregunta", $cabeceras, $total, 5);
-
+        $tabla =  Funciones::pintaTabla("Autoescuela.pregunta", $cabeceras, $total, 4);
+        echo $tabla;
         $registros = BD::obtienefilas("Autoescuela.pregunta");
-        $enlace = '<p>';
-        $aux = round($registros/5);
+        $enlace = '<p class="paginador">';
+        $aux = round($registros/4);
+
+        $enlace.= "<a href='listadoPreguntas.php?pag=0'>&lt;&lt;</a>";
+
+        $enlace.= "<a href='listadoPreguntas.php?pag=$menos1'>&lt;</a>";
+
         for($i=0; $i<$aux;$i++){
             $enlace.="<a href='listadoPreguntas.php?pag=$i'>$i</a>";
         }
 
+        $enlace.= "<a href='listadoPreguntas.php?pag=$mas1'>&gt;</a>";
+
+        $t = $aux-1;
+        $enlace.= "<a href='listadoPreguntas.php?pag=$t'>&gt;&gt;</a>";
 
         $enlace.= '</p>';
         ?>
-
-        <div><?php echo $enlace ?></div>
-
     </section>
 
+
+    <div><?php echo $enlace ?></div>
 </body>
 </html>

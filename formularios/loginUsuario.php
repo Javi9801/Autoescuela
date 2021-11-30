@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 
 
 <body>
 
     <section class="imagen_form">
-        <p><img src="recursos/logo.png"  width="200px" height="200px" alt=""></p>
+        <p><img src="../recursos/logo.png"  width="200px" height="200px" alt=""></p>
     </section>
     <form id="login_form" class="login" action="" method="POST">
 
@@ -42,9 +42,9 @@
 </html>
 
 <?php
-    require_once("cargadores/cargarHelper.php");
-    require_once("cargadores/cargarEntidades.php");
-    require_once("cargadores/cargarIncludes.php");
+    require_once("../cargadores/cargarHelper.php");
+    require_once("../cargadores/cargarEntidades.php");
+    require_once("../cargadores/cargarIncludes.php");
     $error = "";
 
 
@@ -61,7 +61,7 @@
                 if(login::identifica($usuario, $password, false)){
                     if(login::usuarioEstaLogueado()){
                         sesion::escribir('usuario', BD::obtieneUsuario($usuario, $password));
-                        header("Location: paginaInicio.php");
+                        header("Location: ../index.php");
                     }
                 } else {
                     header("Location: loginUsuario.php");

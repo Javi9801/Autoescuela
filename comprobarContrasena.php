@@ -36,7 +36,7 @@ if(isset($_POST["usuario_enviar_1"])){
     sesion::iniciar();
     sesion::escribir('usuario', $p);
     BD::borraUsuarioTemporal($_GET['id']);
-    header("Location: paginaInicio.php");
+    header("Location: index.php");
 }
 
 

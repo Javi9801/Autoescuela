@@ -1,7 +1,7 @@
 <?php
 require_once("sesion.php");
 require_once("BD.php");
-require_once("./entidades/usuario.php");
+require_once("../entidades/usuario.php");
 
 class Login {
     public static function identifica(string $usuario,string $contrasena,bool $recuerdame){
