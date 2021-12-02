@@ -216,11 +216,37 @@ class BD{
     public static function obtienePreguntasJSON(){
         $ret = array();
 
-        $res = self::$con->query("Select * from autoescuela.pregunta");
+        $res = self::$con->query("Select id,enunciado,imagen,tematica from autoescuela.pregunta");
 
-        $filas = $res->fetchAll(PDO::FETCH_ASSOC);
+        while($registro = $res->fetch()){
+            $p = new pregunta($registro['enunciado'], $registro['imagen'], self::obtieneTematica($registro['tematica']));
+            $p->id = $registro['id'];
+            $ret[]=$p;
+        }
 
-        return json_encode($filas);
+
+
+        return $ret;
+
+    }
+
+    //Metodos relacionados con el examen
+
+    public static function altaExamen(examen $r){
+        $res = self::$con->prepare("Insert into autoescuela.examen values(default, :descripcion, :n_preguntas, :duracion, :activo)");
+
+        //Inserto una pregunta, todavia sin el array de preguntas
+        $descripcion = $r->descripcion;
+        $duracion = $r->duracion;
+        $n_preguntas = $r->n_preguntas;
+        $activo = $r->activo;
+
+        $res->bindParam(':descripcion',$descripcion);
+        $res->bindParam(':duracion',$duracion);
+        $res->bindParam(':n_preguntas',$n_preguntas);
+        $res->bindParam(':activo',$activo);
+
+        $res->execute();
 
     }
 

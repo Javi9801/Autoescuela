@@ -2,12 +2,11 @@
 require_once("tematica.php");
 require_once("respuesta.php");
 
-class Pregunta{
+class Pregunta implements JSONSerializable{
     private $id;
     private $enunciado;
     private $imagen;
     private $tematica;
-    private $respuestas;
 
     public function __get($atributo){
         if(property_exists($this, $atributo)){
@@ -25,6 +24,15 @@ class Pregunta{
         $this->enunciado = $enunciado;
         $this->imagen = $imagen;
         $this->tematica = $tematica;
+    }
+
+    public function jsonSerialize(){
+        return[
+            'id' => $this->id,
+            'enunciado' => $this->enunciado,
+            'imagen' =>  $this->imagen,
+            'tematica' =>  $this->tematica
+        ];
     }
 }
 

@@ -41,7 +41,7 @@ var preguntas_examen = document.getElementById("contenedor_preguntas_examen");
         for (let valor of datos){
 
             var d = document.createElement("div");
-            d.innerHTML = valor.id+"-->"+valor.enunciado+"--->"+valor.tematica;
+            d.innerHTML = valor.id+"-->"+valor.enunciado+"--->"+valor.tematica.descripcion;
             d.setAttribute("id", 'p_'+valor.id);
             d.setAttribute("draggable", true);
             //d.setAttribute("ondragstart", drag(event));

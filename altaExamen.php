@@ -7,6 +7,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
     <script src="js/cargaPreguntasExamen.js"></script>
+    <script src="js/funcionesAdicionales.js"></script>
+    <script src="js/enviarExamen.js"></script>
 </head>
 <body>
     <?php include ("includes/nav.php");?>
@@ -61,12 +63,5 @@ if(isset($_POST['examen_enviar'])){
     $descripcion = $_POST["examen_descripcion"];
     $duracion = $_POST["examen_descripcion"];
 
-    $examen = new examen($_POST["descripcion"],5, $_POST["duracion"], 1);
-
-    BD::altaExamen($examen);
 }
-
-
-
-
 ?>

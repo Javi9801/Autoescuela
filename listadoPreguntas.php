@@ -49,13 +49,19 @@
         $registros = BD::obtienefilas("Autoescuela.pregunta");
         $enlace = '<p class="paginador">';
         $aux = round($registros/4);
+        $act = "";
 
         $enlace.= "<a href='listadoPreguntas.php?pag=0'>&lt;&lt;</a>";
 
         $enlace.= "<a href='listadoPreguntas.php?pag=$menos1'>&lt;</a>";
 
         for($i=0; $i<$aux;$i++){
-            $enlace.="<a href='listadoPreguntas.php?pag=$i'>$i</a>";
+            if($pag == $i){
+                $act = "activo";
+            } else {
+                $act = "noActivo";
+            }
+            $enlace.="<a class='$act' href='listadoPreguntas.php?pag=$i'>$i</a>";
         }
 
         $enlace.= "<a href='listadoPreguntas.php?pag=$mas1'>&gt;</a>";

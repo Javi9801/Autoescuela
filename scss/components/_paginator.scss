@@ -4,9 +4,22 @@
     width: 50%;
     margin-left: 20%;
 
-    a{
-        padding: 5px;
-        text-decoration: none;
 
+    a{
+        padding: 8px 16px;
+        text-decoration: none;
+        color: black;
+        border: 1px solid #ddd;
+        background-color: white;
+
+    }
+
+    a.activo {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    a:hover:not(.activo) {
+        background-color: #ddd;
     }
 }

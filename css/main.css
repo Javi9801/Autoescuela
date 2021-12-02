@@ -293,6 +293,16 @@ form span {
   margin-left: 20%;
 }
 .paginador a {
-  padding: 5px;
+  padding: 8px 16px;
   text-decoration: none;
+  color: black;
+  border: 1px solid #ddd;
+  background-color: white;
+}
+.paginador a.activo {
+  background-color: #4CAF50;
+  color: white;
+}
+.paginador a:hover:not(.activo) {
+  background-color: #ddd;
 }/*# sourceMappingURL=main.css.map */

@@ -20,7 +20,7 @@ class Examen{
     }
 
     public function __construct($descripcion, $n_preguntas, $duracion, $activo){
-        $this->descripcion = $nombre;
+        $this->descripcion = $descripcion;
         $this->n_preguntas = $n_preguntas;
         $this->duracion = $duracion;
         $this->activo = $activo;

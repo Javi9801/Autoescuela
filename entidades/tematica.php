@@ -1,5 +1,5 @@
 <?php
-class Tematica{
+class Tematica implements JSONSerializable{
     private $id;
     private $descripcion;
 
@@ -18,4 +18,13 @@ class Tematica{
     public function __construct($descripcion){
         $this->descripcion = $descripcion;
     }
+
+    public function jsonSerialize(){
+        return[
+            'id' => $this->id,
+            'descripcion' => $this->descripcion
+        ];
+    }
+
+
 }

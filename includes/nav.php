@@ -14,9 +14,9 @@ if($u->rol == "2"){
         <section>
             <img class="izquierda" src="recursos/logo.png" width="120px" height="80px" alt="">
 
-            <img class="derecha" src="recursos/perfil.png" width="100px" alt="">
+            <img class="derecha" id="imagen_perfil" src="recursos/perfil.png" width="100px" alt="">
 
-            <section class="perfil">
+            <section id="informacion_usuario" class="perfil">
                 <ul>
 
                     <li><a href="inicio.php">Usuario: <?php echo $u->email ?></a></li>
@@ -69,9 +69,9 @@ if($u->rol == "2"){
 <section>
     <img class="izquierda" src="recursos/logo.png" width="80px" alt="">
 
-    <img class="derecha" src="recursos/perfil.png" width="100px" alt="">
+    <img class="derecha" id="imagen_perfil" src="recursos/perfil.png" width="100px" alt="">
 
-    <section class="perfil">
+    <section id="informacion_usuario" class="perfil">
         <ul>
 
             <li><a href="inicio.php">Usuario: <?php echo $u->email ?></a></li>

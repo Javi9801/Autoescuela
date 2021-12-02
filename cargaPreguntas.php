@@ -5,9 +5,13 @@ require_once("cargadores/cargarIncludes.php");
 BD::conecta();
 
 if(BD::obtienePreguntasJSON()!=null){
-    echo BD::obtienePreguntasJSON();
-    return true;
 
+    $n = BD::obtienePreguntasJSON();
+    $pre = json_encode($n);
+
+    echo($pre);
+
+    return true;
 } else {
     return false;
 }
