@@ -7,15 +7,24 @@ BD::conecta();
 
 if(isset($_POST["descripcion"]) && isset($_POST["duracion"]) && isset($_POST["n_preguntas"])){
 
-
     $desc = $_POST["descripcion"];
+    $dur = (int)$_POST["duracion"];
+    $dur = $dur*60;
+    $npreguntas = (int)$_POST["n_preguntas"];
 
-    $e = new Examen($_POST["descripcion"], 4,$_POST["duracion"], 1);
+    $e = new Examen($desc,$npreguntas,$dur, 1);
     BD::altaExamen($e);
 
     $e->id = BD::ultimoIdInsertado("Autoescuela.examen");
+    $preguntas = [];
 
-    $arr = $_POST["preguntas"];
+    $preguntas = explode(",",$_POST["preguntas"]);
+
+    for($i=0; $i<$npreguntas;$i++){
+      BD::altaPreguntasExamen($e, $preguntas[$i]);
+    }
+
+
 
     $obj->respuesta = true;
     } else {

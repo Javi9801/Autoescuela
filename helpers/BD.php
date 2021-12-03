@@ -182,6 +182,20 @@ class BD{
 
     }
 
+    public static function obtienePregunta($id){
+        $res = self::$con->query("Select * from autoescuela.pregunta where id=$id");
+
+        if($res != false){
+            $registro = $res->fetch();
+
+            $u = new pregunta($registro['enunciado'], $registro['imagen'],$registro['tematica'] );
+
+            $u->id = $registro['id'];
+
+            return $u;
+        }
+    }
+
 
     public static function addRespuestas($r, $id){
         $res = self::$con->prepare("Update autoescuela.pregunta set 'respuestas' = :respuestas where 'id' = :id)");
@@ -248,6 +262,19 @@ class BD{
 
         $res->execute();
 
+    }
+
+    public static function altaPreguntasExamen($e, $i){
+        $p = self::obtienePregunta($i);
+
+        $res = self::$con->prepare("Insert into autoescuela.examen_pregunta values(:id_examen, :id_pregunta)");
+        $id_examen = $e->id;
+        $id_pregunta = $p->id;
+
+        $res->bindParam(':id_examen',$id_examen);
+        $res->bindParam(':id_pregunta',$id_pregunta);
+
+        $res->execute();
     }
 
 

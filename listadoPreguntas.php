@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
     <script src="js/cargaPreguntasExamen.js"></script>
+    <script src="js/funcionesAdicionales.js"></script>
 </head>
 <body>
     <?php include ("includes/nav.php");?>

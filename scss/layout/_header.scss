@@ -48,7 +48,7 @@ nav{
 //     @include animaciones(iluminar, 0.4s, linear);
 // }
 header{
-    margin-top: 10px;
+
     a{
         text-decoration: none;
         width: 160px;
@@ -77,8 +77,13 @@ header{
             width: 40px;
         }
 
+        .izquierda{
+            margin-top: 5px;
+        }
+
+
         .perfil{
-            // visibility: hidden;
+            visibility: hidden;
             float: right;
             margin-right: 20px;
 

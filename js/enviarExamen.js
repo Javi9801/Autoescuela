@@ -12,13 +12,15 @@ window.addEventListener("load", function(){
         if(duracion.value != "" && descripcion.value!="" && preguntas!=""){
             var formData = new FormData();
 
-            var p = [];
+            var p = new Array();
             for(let i=1; i<preguntas.length;i++){
-                p.push(preguntas[i]);
+                var ids = preguntas[i].innerHTML.substr(0,1);
+                p.push(ids);
             }
             formData.append("descripcion",descripcion.value);
             formData.append("duracion",duracion.value);
             formData.append("preguntas",p);
+            var l = preguntas.length-1;
             formData.append("n_preguntas",preguntas.length-1);
 
             fetch("procesaExamen.php",{
@@ -34,6 +36,10 @@ window.addEventListener("load", function(){
                         alert("Error");
                     }
                 })
+
+            document.getElementById("form_examen").reset();
+            document.getElementById("contenedor_preguntas_examen").innerHTML="<h1>Contenedor</h1>";
+            document.getElementById("contenedor_preguntas").innerHTML="<h1>Preguntas</h1>";
         }
     }
 })

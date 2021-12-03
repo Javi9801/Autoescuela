@@ -15,7 +15,7 @@
 
     <section class="contenido">
 
-        <form action="" class="form_examen" method="POST">
+        <form action="" class="form_examen" id="form_examen" method="POST">
         <h1>Examen/Alta Examen</h1>
 
             <p>
