@@ -43,10 +43,12 @@
 
 
         BD::conecta();
-        $cabeceras = array("Id","Enunciado", "Tematica");
+        $cabeceras = array("Id","Enunciado", "Tematica", "Acciones");
 
-        $tabla =  Funciones::pintaTabla("Autoescuela.pregunta", $cabeceras, $total, 4);
+        $tabla =  Funciones::pintaTablaPreguntas("Autoescuela.pregunta", $cabeceras, $total, 4);
         echo $tabla;
+
+
         $registros = BD::obtienefilas("Autoescuela.pregunta");
         $enlace = '<p class="paginador">';
         $aux = round($registros/4);

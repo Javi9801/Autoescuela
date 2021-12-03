@@ -27,7 +27,9 @@
                 <input type="submit" id="examen_enviar" name="examen_enviar" class="btn_examen" value="Enviar Examen">
             </p>
 
-            <p><input type="button" id="cargar_preguntas" name="cargar_preguntas" value="Cargar"></p>
+            <p>Filtro
+            <input type="text" id="texto" name="texto" value="">
+            </p>
 
             <section id="contenedor_preguntas" class="contenedorP">
             <h1>Preguntas</h1>

@@ -1,40 +1,71 @@
 window.addEventListener("load", function(){
 
-var cargar = this.document.getElementById("cargar_preguntas");
-var preguntas = document.getElementById("contenedor_preguntas");
-var preguntas_examen = document.getElementById("contenedor_preguntas_examen");
-    cargar.onclick = function(ev){
-
-        ev.preventDefault();
-        fetch('cargaPreguntas.php')
+    fetch('cargaPreguntas.php')
         .then( res => res.json() )
         .then( datos => {
             pintaDatos(datos);
         });
+
+
+    // var cargar = this.document.getElementById("cargar_preguntas");
+    var preguntas = document.getElementById("contenedor_preguntas");
+    var preguntas_examen = document.getElementById("contenedor_preguntas_examen");
+    const izq = document.getElementById("contenedor_preguntas");
+    const divs=izq.getElementsByTagName("div");
+
+    const filtro=document.getElementById("texto");
+
+    filtro.onkeyup=function(){
+
+        for(let i=0;i<divs.length;i++){
+            divs[i].classList.remove("marcado");
+            if(divs[i].innerHTML.indexOf(filtro.value)<0)
+                divs[i].classList.add("oculto")
+            else
+                divs[i].classList.remove("oculto")
+        }
     }
 
-        preguntas.ondragover = function(ev){
+
+
+    // cargar.onclick = function(ev){
+
+    //     ev.preventDefault();
+    //     fetch('cargaPreguntas.php')
+    //     .then( res => res.json() )
+    //     .then( datos => {
+    //         pintaDatos(datos);
+    //     });
+    // }
+
+    for (let i=0;i<divs.length;i++){
+
+        divs[i].ondragover = function(ev){
             ev.preventDefault();
         }
 
-        preguntas.ondrop = function(ev) {
+        divs[i].ondrop = function(ev) {
             ev.preventDefault();
             var data = ev.dataTransfer.getData("text");
             ev.target.appendChild(document.getElementById(data));
         }
 
-        preguntas_examen.ondragover = function(ev){
-            ev.preventDefault();
-        }
-
-        preguntas_examen.ondrop = function(ev) {
-            ev.preventDefault();
-            var data = ev.dataTransfer.getData("text");
-            ev.target.appendChild(document.getElementById(data));
-        }
+        divs[i].ondragstart=function(ev){
+            ev.dataTransfer.setData("text",ev.target.id)
+        };
 
 
+    }
 
+    preguntas_examen.ondragover = function(ev){
+        ev.preventDefault();
+    }
+
+    preguntas_examen.ondrop = function(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
 
     function pintaDatos(datos){
         preguntas.innerHTML = "<h1>Preguntas</h1>";

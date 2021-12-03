@@ -5,10 +5,10 @@ body {
 }
 
 .contenido {
-  margin-top: 10%;
+  margin-top: 11%;
   margin-left: 5px;
   margin-right: 20px;
-  margin-bottom: 7%;
+  margin-bottom: 8%;
 }
 
 @-webkit-keyframes iluminar {
@@ -164,6 +164,9 @@ footer {
 #contenedor_preguntas div {
   border-bottom: 1px solid black;
   padding: 5px;
+}
+#contenedor_preguntas div.oculto {
+  display: none;
 }
 
 .central {

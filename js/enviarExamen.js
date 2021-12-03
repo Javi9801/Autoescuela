@@ -5,7 +5,6 @@ window.addEventListener("load", function(){
     var descripcion = document.getElementById("examen_descripcion");
     var enviar = document.getElementById("examen_enviar");
 
-
     enviar.onclick = function(ev){
         ev.preventDefault();
 

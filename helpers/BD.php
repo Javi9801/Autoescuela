@@ -207,6 +207,21 @@ class BD{
 
     }
 
+    //obtiene respuestas de una pregunta
+
+    public static function obtieneRespuestas($idPregunta){
+        $ret = array();
+
+        $res = self::$con->query("Select * from autoescuela.respuesta where id_pregunta = $idPregunta");
+
+        while($registro = $res->fetch()){
+            $p = new respuesta($registro['enunciado'], $registro['id_pregunta']);
+            $p->id = $registro['id'];
+            $ret[]=$p;
+        }
+        return $ret;
+
+    }
 
     //Metodo que inserta una respuesta
 

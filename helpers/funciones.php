@@ -17,7 +17,7 @@ class Funciones{
         return $errores;
     }
 
-    public static function selectDinamico($idsel, $tabla){
+    public static function selectDinamico($idsel, $tabla, $t=""){
         BD::conecta();
         $vec = BD::obtieneTabla($tabla);
 
@@ -26,6 +26,13 @@ class Funciones{
         while($registro = $vec->fetch()){
             $id = $registro[0];
             $des = $registro[1];
+
+            if($t==$id){
+                $selected = "selected";
+            } else{
+                $selected = "";
+            }
+
             $select .="<option value='$id'>".$des."</option>";
         }
         $select .= "</select>";
@@ -33,7 +40,7 @@ class Funciones{
         return $select;
     }
 
-    public static function pintaTabla($tabla, $columnas, $pag, $limit){
+    public static function pintaTablaPreguntas($tabla, $columnas, $pag, $limit){
 
         $json = BD::obtieneJSON_Tabla($tabla, $pag, 4);
 
@@ -54,6 +61,7 @@ class Funciones{
             $html.='<td>'.$i['id'].'</td>';
             $html.='<td>'.$i['enunciado'].'</td>';
             $html.='<td>'.BD::obtieneTematica($i['tematica'])->descripcion.'</td>';
+            $html.='<td><a href="verPregunta.php?idPregunta='.$i['id'].'"><img src="./recursos/perfil.png" width="50px"></a></td>';
             $html.='</tr>';
             }
 
