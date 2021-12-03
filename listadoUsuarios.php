@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/cargaPreguntasExamen.js"></script>
     <script src="js/funcionesAdicionales.js"></script>
 </head>
 <body>
@@ -14,7 +13,7 @@
     <section class="contenido">
 
 
-        <h1 class="h1_preguntas">Listado Preguntas</h1>
+        <h1 class="h1_preguntas">Listado Usuarios</h1>
 
       
 
@@ -43,20 +42,20 @@
 
 
         BD::conecta();
-        $cabeceras = array("Id","Enunciado", "Tematica", "Acciones");
+        $cabeceras = array("Id","Email", "Nombre", "Apellidos", "Fecha Nacimiento", "Rol", "Foto", "Activo", "Acciones");
 
-        $tabla =  Funciones::pintaTablaPreguntas("Autoescuela.pregunta", $cabeceras, $total, 4);
+        $tabla =  Funciones::pintaTablaUsuarios("Autoescuela.usuario", $cabeceras, $total, 4);
         echo $tabla;
 
         
-        $registros = BD::obtienefilas("Autoescuela.pregunta");
+        $registros = BD::obtienefilas("Autoescuela.usuario");
         $enlace = '<p class="paginador">';
         $aux = round($registros/4);
         $act = "";
 
-        $enlace.= "<a href='listadoPreguntas.php?pag=0'>&lt;&lt;</a>";
+        $enlace.= "<a href='listadoUsuarios.php?pag=0'>&lt;&lt;</a>";
 
-        $enlace.= "<a href='listadoPreguntas.php?pag=$menos1'>&lt;</a>";
+        $enlace.= "<a href='listadoUsuarios.php?pag=$menos1'>&lt;</a>";
 
         for($i=0; $i<$aux;$i++){
             if($pag == $i){
@@ -64,13 +63,13 @@
             } else {
                 $act = "noActivo";
             }
-            $enlace.="<a class='$act' href='listadoPreguntas.php?pag=$i'>$i</a>";
+            $enlace.="<a class='$act' href='listadoUsuarios.php?pag=$i'>$i</a>";
         }
 
-        $enlace.= "<a href='listadoPreguntas.php?pag=$mas1'>&gt;</a>";
+        $enlace.= "<a href='listadoUsuarios.php?pag=$mas1'>&gt;</a>";
 
         $t = $aux-1;
-        $enlace.= "<a href='listadoPreguntas.php?pag=$t'>&gt;&gt;</a>";
+        $enlace.= "<a href='listadoUsuarios.php?pag=$t'>&gt;&gt;</a>";
 
         $enlace.= '</p>';
         ?>

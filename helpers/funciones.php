@@ -70,4 +70,39 @@ class Funciones{
         return $html;
     }
 
+    public static function pintaTablaUsuarios($tabla, $columnas, $pag, $limit){
+
+        $json = BD::obtieneJSON_Tabla($tabla, $pag, 4);
+
+        $vector = json_decode($json, true);
+
+        $html = '<table class="tabla"><tr>';
+
+
+        foreach($columnas as $i){
+            $html.='<th>'.$i.'</th>';
+
+        }
+        $html.='</tr>';
+
+
+        foreach($vector as $i){
+            $html.='<tr>';
+            $html.='<td>'.$i['id'].'</td>';
+            $html.='<td>'.$i['email'].'</td>';
+            $html.='<td>'.$i['nombre'].'</td>';
+            $html.='<td>'.$i['apellidos'].'</td>';
+            $html.='<td>'.$i['fecha_nacimiento'].'</td>';
+            $html.='<td>'.BD::obtieneRol($i['rol'])->descripcion.'</td>';
+            $html.='<td>'.$i['foto'].'</td>';
+            $html.='<td>'.$i['activo'].'</td>';
+            $html.='<td><a href="verUsuario.php?idUsuario='.$i['id'].'"><img src="./recursos/perfil.png" width="50px"></a></td>';
+            $html.='</tr>';
+            }
+
+            $html.='</table>';
+
+        return $html;
+    }
+
 }

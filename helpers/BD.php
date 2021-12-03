@@ -160,6 +160,25 @@ class BD{
         }
     }
 
+    //metodo para obtener el rol
+    
+    public static function obtieneRol($id){
+        $res = self::$con->query("Select * from Autoescuela.rol where id = '$id'");
+
+
+        if($res != false){
+            $registro = $res->fetch();
+
+            $u = new rol($registro['descripcion']);
+
+            $u->id = $registro['id'];
+
+            return $u;
+        }
+
+        return false;
+    }
+
 
     //Metodos relacionados con las preguntas y respuestas
 
