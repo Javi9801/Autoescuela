@@ -14,13 +14,19 @@
     <section class="contenido">
 
 
-        <h1 class="h1_preguntas">Listado Preguntas</h1>
+        <h1 class="h1_preguntas">Listado Examenes</h1>
 
       
 
         <?php
         require_once("cargadores/cargarHelper.php");
         require_once("cargadores/cargarEntidades.php");
+
+        sesion::iniciar();
+        $u = sesion::leer('usuario');
+        BD::conecta();
+        $rol = BD::obtieneRol($u->rol);
+
 
         if(isset($_GET['pag'])){
             $pag = $_GET['pag'];
@@ -39,24 +45,20 @@
             $mas1 = $pag+1;
         }
 
+        $cabeceras = array("Id","Descripcion", "Nº Preguntas", "Duracion", "Activado", "Acciones");
 
-
-
-        BD::conecta();
-        $cabeceras = array("Id","Enunciado", "Tematica", "Acciones");
-
-        $tabla =  Funciones::pintaTablaPreguntas("Autoescuela.pregunta", $cabeceras, $total, 4);
+        $tabla =  Funciones::pintaTablaExamenes("Autoescuela.examen", $cabeceras, $total, 4, $rol->id);
         echo $tabla;
 
         
-        $registros = BD::obtienefilas("Autoescuela.pregunta");
+        $registros = BD::obtienefilas("Autoescuela.examen");
         $enlace = '<p class="paginador">';
         $aux = round($registros/4);
         $act = "";
 
-        $enlace.= "<a href='listadoPreguntas.php?pag=0'>&lt;&lt;</a>";
+        $enlace.= "<a href='listadoExamenes.php?pag=0'>&lt;&lt;</a>";
 
-        $enlace.= "<a href='listadoPreguntas.php?pag=$menos1'>&lt;</a>";
+        $enlace.= "<a href='listadoExamenes.php?pag=$menos1'>&lt;</a>";
 
         for($i=0; $i<$aux;$i++){
             if($pag == $i){
@@ -64,13 +66,13 @@
             } else {
                 $act = "noActivo";
             }
-            $enlace.="<a class='$act' href='listadoPreguntas.php?pag=$i'>$i</a>";
+            $enlace.="<a class='$act' href='listadoExamenes.php?pag=$i'>$i</a>";
         }
 
-        $enlace.= "<a href='listadoPreguntas.php?pag=$mas1'>&gt;</a>";
+        $enlace.= "<a href='listadoExamenes.php?pag=$mas1'>&gt;</a>";
 
         $t = $aux-1;
-        $enlace.= "<a href='listadoPreguntas.php?pag=$t'>&gt;&gt;</a>";
+        $enlace.= "<a href='listadoExamenes.php?pag=$t'>&gt;&gt;</a>";
 
         $enlace.= '</p>';
         ?>

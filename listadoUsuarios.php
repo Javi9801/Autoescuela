@@ -77,5 +77,7 @@
 
 
     <div><?php echo $enlace ?></div>
+
+    <?php include ("includes/footer.php");?>
 </body>
 </html>

@@ -105,4 +105,41 @@ class Funciones{
         return $html;
     }
 
+    public static function pintaTablaExamenes($tabla, $columnas, $pag, $limit, $rol){
+
+        $json = BD::obtieneJSON_Tabla($tabla, $pag, 4);
+
+        $vector = json_decode($json, true);
+
+        $html = '<table class="tabla"><tr>';
+
+
+        foreach($columnas as $i){
+            $html.='<th>'.$i.'</th>';
+
+        }
+        $html.='</tr>';
+
+
+        foreach($vector as $i){
+            $html.='<tr>';
+            $html.='<td>'.$i['id'].'</td>';
+            $html.='<td>'.$i['descripcion'].'</td>';
+            $html.='<td>'.$i['n_preguntas'].'</td>';
+            $html.='<td>'.$i['duracion'].'</td>';
+            $html.='<td>'.$i['activo'].'</td>';
+
+            if($rol==1){
+                $html.='<td><a href="verExamen.php?idExamen='.$i['id'].'">Realizar</a></td>';
+            } else {
+                $html.='<td><a href="#">Buscar</a></td>';
+            }
+            $html.='</tr>';
+            }
+
+            $html.='</table>';
+
+        return $html;
+    }
+
 }

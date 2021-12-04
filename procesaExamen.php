@@ -9,7 +9,7 @@ if(isset($_POST["descripcion"]) && isset($_POST["duracion"]) && isset($_POST["n_
 
     $desc = $_POST["descripcion"];
     $dur = (int)$_POST["duracion"];
-    $dur = $dur*60;
+    $dur = ($dur*100);
     $npreguntas = (int)$_POST["n_preguntas"];
 
     $e = new Examen($desc,$npreguntas,$dur, 1);

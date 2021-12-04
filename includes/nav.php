@@ -21,7 +21,7 @@ if($u->rol == "2"){
 
                     <li><a href="inicio.php">Usuario: <?php echo $u->email ?></a></li>
                     <li><a href="inicio.php">Editar Usuario</a></li>
-                    <li><a href="inicio.php">Cerrar Sesion</a></li>
+                    <li><a href="loginout.php">Cerrar Sesion</a></li>
                 </ul>
             </section>
         </section>
@@ -48,7 +48,7 @@ if($u->rol == "2"){
                     </ul>
                 </li>
 
-                <li class="categoria"><a href="#">Examenes</a>
+                <li class="categoria"><a href="listadoExamenes.php">Examenes</a>
                     <ul class="submenu">
                         <li><a href="altaExamen.php">Alta Examen</a></li>
                         <li><a href="#">Historico</a></li>
@@ -75,7 +75,7 @@ if($u->rol == "2"){
 
             <li><a href="inicio.php">Usuario: <?php echo $u->email ?></a></li>
             <li><a href="inicio.php">Editar Usuario</a></li>
-            <li><a href="inicio.php">Cerrar Sesion</a></li>
+            <li><a href="loginout.php">Cerrar Sesion</a></li>
         </ul>
     </section>
 </section>
@@ -86,7 +86,7 @@ if($u->rol == "2"){
         </li>
         <li class="categoria"><a href="#">Examen aleatorio</a>
         </li>
-        <li class="categoria"><a href="#">Examen</a>
+        <li class="categoria"><a href="listadoExamenes.php">Examenes</a>
         </li>
 
     </ul>

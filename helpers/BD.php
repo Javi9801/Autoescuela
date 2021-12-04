@@ -112,7 +112,7 @@ class BD{
 
 
     public static function modificaUsuario($id, $password, $nombre, $apellido){
-        $res = self::$con->prepare("Update `usuario` set `password` = :password, `nombre` = :nombre, `apellidos` = :apellidos where `id` = :id)");
+        $res = self::$con->prepare("Update Autoescuela.usuario set `password` = :password, `nombre` = :nombre, `apellidos` = :apellidos where `id` = :id");
 
         $res->bindParam(':password',$password);
         $res->bindParam(':nombre',$nombre);
@@ -163,7 +163,7 @@ class BD{
     //metodo para obtener el rol
     
     public static function obtieneRol($id){
-        $res = self::$con->query("Select * from Autoescuela.rol where id = '$id'");
+        $res = self::$con->query("Select * from Autoescuela.rol where id = $id");
 
 
         if($res != false){

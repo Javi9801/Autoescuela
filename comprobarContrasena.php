@@ -4,7 +4,6 @@ require_once("cargadores/cargarEntidades.php");
 
 
 BD::conecta();
-var_dump($_GET['id']);
 if(isset($_GET['id'])){
     $p = BD::obtieneID($_GET['id']);
     if($p!=false){
@@ -29,13 +28,9 @@ if(isset($_GET['id'])){
 
 if(isset($_POST["usuario_enviar_1"])){
     if((isset($_POST["usuario_nombre_1"])) && (isset($_POST["usuario_apellidos_1"]))){
-        BD::modificaUsuario((int)$p->id, $_POST['usuario_contrasena_1'], $_POST["usuario_nombre_1"], $_POST["usuario_apellidos_1"]);
+        BD::modificaUsuario($p->id, $_POST['usuario_contrasena_1'], $_POST["usuario_nombre_1"], $_POST["usuario_apellidos_1"]);
         //completar esto, no hace el update
     }
-
-    sesion::iniciar();
-    sesion::escribir('usuario', $p);
-    BD::borraUsuarioTemporal($_GET['id']);
     header("Location: index.php");
 }
 
