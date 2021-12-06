@@ -130,7 +130,7 @@ class Funciones{
             $html.='<td>'.$i['activo'].'</td>';
 
             if($rol==1){
-                $html.='<td><a href="verExamen.php?idExamen='.$i['id'].'">Realizar</a></td>';
+                $html.='<td><a href="realizarExamen.php?idExamen='.$i['id'].'">Realizar</a></td>';
             } else {
                 $html.='<td><a href="#">Buscar</a></td>';
             }
