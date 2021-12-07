@@ -51,6 +51,19 @@
 }
 
 #preguntas_examen{
-    margin-left: 40%;
+    h2{
+        text-align: center;
+        color: $color_fondo;
+    }
+
+}
+.botones_examen{
+    margin-left: 30%;
+    background-color: white;
+    padding: 20px;
+    width: 35%;
+    margin-top: 0;
+    border: 1px solid black;
+    text-align: center;
 
 }

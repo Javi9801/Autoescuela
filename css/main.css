@@ -190,8 +190,19 @@ footer {
   display: none;
 }
 
-#preguntas_examen {
-  margin-left: 40%;
+#preguntas_examen h2 {
+  text-align: center;
+  color: #50C15D;
+}
+
+.botones_examen {
+  margin-left: 30%;
+  background-color: white;
+  padding: 20px;
+  width: 35%;
+  margin-top: 0;
+  border: 1px solid black;
+  text-align: center;
 }
 
 form {
@@ -202,6 +213,7 @@ form {
   width: 35%;
   border: 1px solid black;
   font-size: 1.1em;
+  margin-bottom: 0;
 }
 form h1 {
   padding-bottom: 10px;
