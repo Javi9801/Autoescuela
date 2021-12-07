@@ -50,3 +50,7 @@
     @include animaciones(botones, 0.4s, linear);
     background-color: $color_fondo;
 }
+
+#finalizar_examen{
+    margin-left: 60%;
+}

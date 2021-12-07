@@ -43,6 +43,7 @@
                     for($i=0; $i<$n_preg; $i++){
                         $r = BD::obtieneRespuestas($p[$i]->id);
                         $n_resp = count($r);
+                        $resp[] = $r;
                     ?>
 
                     <section id="pre_examen<?php echo $i ?>">
@@ -52,13 +53,13 @@
 
                         <?php
 
-                            for($j=1; $j<$n_resp; $j++){
+                            for($j=0; $j<$n_resp; $j++){
                             ?>
 
                             <p>
                                 <label for="pregunta_respuesta_examen_<?php echo $j ?>">Opcion <?php echo $j ?></label>
                                 <input type="text" id="pregunta_respuesta_examen_<?php echo $j ?>" disabled name="pregunta_respuesta_examen_<?php echo $j ?>" value="<?php echo $r[$j]->enunciado ?>">
-                                <input type="radio" id="opcion_examen_<?php echo $j ?>" value="opcion<?php echo $j ?>" name="opciones<?php echo $i ?>"> Correcta
+                                <input type="radio" id="opcion_examen_<?php echo $j ?>" value="opcion<?php echo $j?>" name="opciones<?php echo $i ?>"> Correcta
                             </p>
                             <?php
                             }
@@ -90,16 +91,19 @@
 <?php
 
     if(isset($_POST["finalizar_examen"])){
+
+        $preguntas_respuestas = [];
         for($i=0; $i<$n_preg; $i++){
-            for($j=1; $j<$n_resp; $j++){
+            for($j=0; $j<$n_resp; $j++){
                 if($_POST['opciones'.$i.''] == 'opcion'.$j.''){
                     $a = $p[$i]->id;
-                    $b = $r[$j]->id;
+                    $b = $resp[$i][$j]->id;
+                    $preguntas_respuestas[$a] = $b;
                 }
             }
         }
 
-
+        BD::altaExamenHecho($examen, $u, "Now()", 3, json_encode($preguntas_respuestas));
 
     }
 

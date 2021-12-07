@@ -161,7 +161,7 @@ class BD{
     }
 
     //metodo para obtener un rol
-    
+
     public static function obtieneRol($id){
         $res = self::$con->query("Select * from Autoescuela.rol where id = $id");
 
@@ -180,24 +180,24 @@ class BD{
     }
 
         //metodo para obtener un examen
-    
+
         public static function obtieneExamen($id){
             $res = self::$con->query("Select * from Autoescuela.examen where id = $id");
-    
-    
+
+
             if($res != false){
                 $registro = $res->fetch();
-    
+
                 $u = new examen($registro['descripcion'],$registro['n_preguntas'],$registro['duracion'],$registro['activo']);
-    
+
                 $u->id = $registro['id'];
-    
+
                 return $u;
             }
-    
+
             return false;
         }
-    
+
 
     //Metodos relacionados con las preguntas y respuestas
 
@@ -331,6 +331,22 @@ class BD{
 
     }
 
+    //alta de examen hecho
+
+    public static function altaExamenHecho($examen,$alumno, $fecha, $calificacion, $ejecucion){
+        $res = self::$con->prepare("Insert into autoescuela.examenhecho values(default, :id_examen, :id_alumno, now(), :calificacion, :ejecucion)");
+        $id_examen = $examen->id;
+        $id_alumno = $alumno->id;
+        $c = (int)$calificacion;
+
+        $res->bindParam(':id_examen',$id_examen);
+        $res->bindParam(':id_alumno',$id_alumno);
+        $res->bindParam(':calificacion', $c);
+        $res->bindParam(':ejecucion',$ejecucion);
+
+        $res->execute();
+
+    }
 
 
     public static function altaPreguntasExamen($e, $i){

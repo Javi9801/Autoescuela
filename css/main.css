@@ -56,7 +56,7 @@ header a {
   display: block;
   text-align: center;
   cursor: pointer;
-  font-size: 1.2em;
+  font-size: 1em;
   background-color: #50C15D;
   color: #eee;
 }
@@ -308,6 +308,10 @@ form span {
   -webkit-animation: botones, 0.4s, linear;
           animation: botones, 0.4s, linear;
   background-color: #50C15D;
+}
+
+#finalizar_examen {
+  margin-left: 60%;
 }
 
 .paginador {

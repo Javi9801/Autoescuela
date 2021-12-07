@@ -26,7 +26,7 @@ if(isset($_POST["descripcion"]) && isset($_POST["duracion"]) && isset($_POST["n_
 
 
 
-    $obj->respuesta = true;
+      $obj->respuesta = true;
     } else {
       $obj->respuesta = false;
     }
