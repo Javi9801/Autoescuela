@@ -21,6 +21,7 @@
     $r = [];
 
     $p = BD::obtienePreguntasExamen($examen->id);
+    // shuffle($p);
     $n_preg = count($p);
 
     ?>
