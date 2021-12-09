@@ -6,7 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
     <script src="js/funcionesAdicionales.js"></script>
-    <script src="js/funcionesExamen.js"></script>
+    <script src="js/recogerExamen.js"></script>
+
 </head>
 <body>
     <?php
@@ -16,13 +17,6 @@
     include ("includes/nav.php");
     BD::conecta();
     $examen = BD::obtieneExamen($_GET['idExamen']);
-
-    $p = [];
-    $r = [];
-
-    $p = BD::obtienePreguntasExamen($examen->id);
-    // shuffle($p);
-    $n_preg = count($p);
 
     ?>
 
@@ -38,42 +32,14 @@
         ?>
             <form action="" method="POST">
                 <h1 class="h1_preguntas"><?php echo $examen->descripcion?></h1>
+                <label id="idFinal" hidden for=""><?php echo ($_GET['idExamen'])?></label>
                 <section id="preguntas_examen">
-                    <?php
-
-                    for($i=0; $i<$n_preg; $i++){
-                        $r = BD::obtieneRespuestas($p[$i]->id);
-                        $n_resp = count($r);
-                        $resp[] = $r;
-                    ?>
-
-                    <section id="pre_examen<?php echo $i ?>">
-
-                        <h2>Pregunta <?php echo $i+1 ?></h2><br>
-                        <br><textarea disabled name="enun" id="enun" cols="45" rows="5"><?php echo $p[$i]->enunciado?></textarea>
-
-                        <?php
-
-                            for($j=0; $j<$n_resp; $j++){
-                            ?>
-
-                            <p>
-                                <label for="pregunta_respuesta_examen_<?php echo $j ?>">Opcion <?php echo $j ?></label>
-                                <input type="text" id="pregunta_respuesta_examen_<?php echo $j ?>" disabled name="pregunta_respuesta_examen_<?php echo $j ?>" value="<?php echo $r[$j]->enunciado ?>">
-                                <input type="radio" id="opcion_examen_<?php echo $j ?>" value="opcion<?php echo $j?>" name="opciones<?php echo $i ?>"> Correcta
-                            </p>
-                            <?php
-                            }
-                            ?>
-
-                    </section>
-
 
 
                 <?php
-                }
 
-            }
+
+        }
             ?>
                 </section>
                 <input type="submit" class="btn_enviar" id="finalizar_examen" name="finalizar_examen" value="Finalizar">
@@ -82,6 +48,7 @@
                 <input type="button" id="anterior" class="anterior" value="Anterior">
                 <input type="button" id="siguiente" class="siguiente" value="Siguiente">
             </section>
+
     </section>
 
     <?php include ("includes/footer.php");?>

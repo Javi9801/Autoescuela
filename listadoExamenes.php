@@ -16,7 +16,7 @@
 
         <h1 class="h1_preguntas">Listado Examenes</h1>
 
-      
+
 
         <?php
         require_once("cargadores/cargarHelper.php");
@@ -50,7 +50,7 @@
         $tabla =  Funciones::pintaTablaExamenes("Autoescuela.examen", $cabeceras, $total, 4, $rol->id);
         echo $tabla;
 
-        
+
         $registros = BD::obtienefilas("Autoescuela.examen");
         $enlace = '<p class="paginador">';
         $aux = round($registros/4);

@@ -7,6 +7,7 @@ class Pregunta implements JSONSerializable{
     private $enunciado;
     private $imagen;
     private $tematica;
+    private $respuestas;
 
     public function __get($atributo){
         if(property_exists($this, $atributo)){
@@ -31,7 +32,8 @@ class Pregunta implements JSONSerializable{
             'id' => $this->id,
             'enunciado' => $this->enunciado,
             'imagen' =>  $this->imagen,
-            'tematica' =>  $this->tematica
+            'tematica' =>  $this->tematica,
+            'respuestas' =>  $this->respuestas
         ];
     }
 }

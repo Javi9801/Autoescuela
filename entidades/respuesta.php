@@ -1,6 +1,6 @@
 <?php
 
-class Respuesta{
+class Respuesta implements JSONSerializable{
     private $id;
     private $enunciado;
     private $id_pregunta;
@@ -20,6 +20,14 @@ class Respuesta{
     public function __construct($enunciado, $id_pregunta){
         $this->enunciado = $enunciado;
         $this->id_pregunta = $id_pregunta;
+    }
+
+    public function jsonSerialize(){
+        return [
+            'id' => $this->id,
+            'enunciado' => $this->enunciado,
+            'id_pregunta' => $this->id_pregunta
+        ];
     }
 }
 
