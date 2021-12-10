@@ -61,6 +61,7 @@ class Funciones{
             $html.='<td>'.$i['id'].'</td>';
             $html.='<td>'.$i['enunciado'].'</td>';
             $html.='<td>'.BD::obtieneTematica($i['tematica'])->descripcion.'</td>';
+            $html.='<td><img src="data:image/jpg;base64,'.$i["imagen"].'"width=100px"></td>';
             $html.='<td><a href="verPregunta.php?idPregunta='.$i['id'].'"><img src="./recursos/perfil.png" width="50px"></a></td>';
             $html.='</tr>';
             }

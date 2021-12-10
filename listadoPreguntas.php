@@ -43,7 +43,7 @@
 
 
         BD::conecta();
-        $cabeceras = array("Id","Enunciado", "Tematica", "Acciones");
+        $cabeceras = array("Id","Enunciado", "Tematica", "Imagen", "Acciones");
 
         $tabla =  Funciones::pintaTablaPreguntas("Autoescuela.pregunta", $cabeceras, $total, 4);
         echo $tabla;

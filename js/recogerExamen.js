@@ -6,7 +6,7 @@ window.addEventListener("load", function(){
     const anterior = document.getElementById("anterior");
     const preguntas = document.getElementById("preguntas_examen");
     const finalizar = document.getElementById("finalizar_examen");
-    const idFinal = document.getElementById("idFinal").value;
+    const idFinal = document.getElementById("idFinal").innerHTML;
 
     fetch('recogePreguntasExamen.php?idExamen='+id+'')
         .then( res => res.json() )
@@ -53,7 +53,7 @@ window.addEventListener("load", function(){
             for(let i=0; i<respuestas.length;i++){
                 for(let j=0; i<respuestas[i].children.length-1;j++){
                     if(respuestas[i].children[j+1].children[2].checked == true){
-                        f.push(respuestas[i].getAttribute("id").substr(10)+" =>idPregunta: "+ respuestas[i].children[j+1].children[1].getAttribute("id").substr(26) + ", enunciado:"+respuestas[i].children[j+1].children[1].value);
+                        f.push({"pregunta":respuestas[i].getAttribute("id").substr(10),"respuesta":{"id":respuestas[i].children[j+1].children[1].getAttribute("id").substr(26),"enunciado":respuestas[i].children[j+1].children[1].value}});
                         break;
                     }
                 }
@@ -72,20 +72,14 @@ window.addEventListener("load", function(){
                     method:"POST",
                     body:formData
                 })
-                    .then(response => response.JSON())
                     .catch(error=>console.log("Error", error))
                     .then(response => {
-                        if(response.respuesta){
-                            alert("Mandado con exito");
+                        if(response.ok){
+                            location.href="listadoExamenes.php";
                         } else {
                             alert("Error");
                         }
                     })
-
-
-
-
-
 
         }
 

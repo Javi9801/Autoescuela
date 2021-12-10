@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/cargarPreguntasExamen.js"></script>
     <script src="js/funcionesAdicionales.js"></script>
+    <script src="js/cargaImagenes.js"></script>
 </head>
 <body>
     <?php include ("includes/nav.php");?>
@@ -15,7 +15,7 @@
     <section class="contenido">
 
 
-        <form action="altaPregunta.php" method="POST">
+        <form action="altaPregunta.php" method="POST" enctype="multipart/form-data">
 
         <h1>Alta Preguntas</h1>
             <label for="pregunta_tematica">Tematica</label>
@@ -28,6 +28,12 @@
 
             <label for="pregunta_enunciado">Enunciado</label>
             <p><textarea name="pregunta_enunciado" id="pregunta_enunciado" cols="30" rows="10"></textarea></p>
+
+            <p>
+                <label for="pregunta_imagen">Imagen </label>
+                <input type="file" id="pregunta_imagen" name="pregunta_imagen">
+                <input type="button" value="Cargar" id="imagen_cargar">
+            </p>
 
 
             <p>
@@ -75,6 +81,10 @@ require_once("cargadores/cargarHelper.php");
 require_once("cargadores/cargarEntidades.php");
 require_once("cargadores/cargarIncludes.php");
 
+
+
+
+
     if(isset($_POST["pregunta_enviar"])){
         BD::conecta();
         $enunciado = $_POST['pregunta_enunciado'];
@@ -84,6 +94,11 @@ require_once("cargadores/cargarIncludes.php");
         $validar->Requerido($enunciado);
         $validar->Requerido($tematica);
 
+
+        // move_uploaded_file($_FILES['pregunta_imagen']['tmp_name'],"./recursos.imagen1.jpg");
+        $foto = file_get_contents($_FILES['pregunta_imagen']['tmp_name']);
+        $foto = base64_encode($foto);
+
         for($i=1; $i<=4;$i++){
             $validar->Requerido($_POST['pregunta_respuesta_'.$i.'']);
         }
@@ -92,7 +107,7 @@ require_once("cargadores/cargarIncludes.php");
 
         if($validar->ValidacionPasada()){
 
-            $p = new Pregunta($enunciado,"imagen",$tematica);
+            $p = new Pregunta($enunciado,$foto,$tematica);
             BD::altaPregunta($p);
 
             $ultId = BD::ultimoIdInsertado("autoescuela.pregunta");
