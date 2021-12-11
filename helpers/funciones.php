@@ -46,14 +46,14 @@ class Funciones{
 
         $vector = json_decode($json, true);
 
-        $html = '<table class="tabla"><tr>';
+        $html = '<table id="tablaPregunta" class="tabla"><thead><tr>';
 
 
         foreach($columnas as $i){
             $html.='<th>'.$i.'</th>';
 
         }
-        $html.='</tr>';
+        $html.='</tr></thead>';
 
 
         foreach($vector as $i){
@@ -77,14 +77,14 @@ class Funciones{
 
         $vector = json_decode($json, true);
 
-        $html = '<table class="tabla"><tr>';
+        $html = '<table id="tablaUsuario" class="tabla"><thead><tr>';
 
 
         foreach($columnas as $i){
             $html.='<th>'.$i.'</th>';
 
         }
-        $html.='</tr>';
+        $html.='</tr></thead>';
 
 
         foreach($vector as $i){
@@ -112,14 +112,14 @@ class Funciones{
 
         $vector = json_decode($json, true);
 
-        $html = '<table class="tabla"><tr>';
+        $html = '<table id="tablaExamen" class="tabla"><thead><tr>';
 
 
         foreach($columnas as $i){
             $html.='<th>'.$i.'</th>';
 
         }
-        $html.='</tr>';
+        $html.='</tr></thead>';
 
 
         foreach($vector as $i){
