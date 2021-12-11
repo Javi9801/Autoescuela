@@ -8,12 +8,12 @@ window.addEventListener("load", function(){
     const finalizar = document.getElementById("finalizar_examen");
     const idFinal = document.getElementById("idFinal").innerHTML;
 
+
     fetch('recogePreguntasExamen.php?idExamen='+id+'')
         .then( res => res.json() )
         .then( datos => {
             pintaPreguntas(datos);
         });
-
 
         siguiente.onclick = function(){
             for(let i=0; i<preguntas.children.length;i++){
@@ -83,6 +83,7 @@ window.addEventListener("load", function(){
 
         }
 
+        creaPaginador();
 })
 
 
@@ -95,6 +96,22 @@ function getParameterByName(name) {
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
     results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function creaPaginador(){
+    const paginador = document.getElementById("paginador_examen");
+    var p = document.createElement(p);
+
+    for(let j=1; j<preguntas_examen.children.length;j++){
+        var b = document.createElement("input");
+        b.setAttribute("type","button");
+        b.id = preguntas_examen.children[j].getAttribute("id").substr(10);
+        b.innerHTML = j;
+        p.appendChild(b);
+
+        paginador.appendChild(p);
+
+    }
 }
 
 function pintaPreguntas(datos){
@@ -184,5 +201,6 @@ function pintaRespuestas(d, respuestas){
 
         d.appendChild(p);
         i++;
+
     }
 }

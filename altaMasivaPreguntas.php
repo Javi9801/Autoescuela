@@ -18,7 +18,7 @@
         <!-- <input id="fileInput" type="file" size="50" onchange="processFiles(this.files)"> -->
        <section class="altasMasivas">
            <h1>Alta Masiva de Preguntas</h1>
-        <textarea placeholder="enunciado;tematica;r1;r2;r3;r4;rCorrecta" id="fileOutput1" rows="20" cols="80"></textarea><br>
+        <textarea placeholder="enunciado;tematica;r1;r2;r3;r4;rCorrecta" id="fileOutput1" rows="15" cols="80"></textarea><br>
         <button id="enviar_archivo_preguntas" value="Enviar">Enviar</button>
        </section>
     </section>
@@ -63,12 +63,12 @@ if(isset($_POST["preguntas"])){
         }
     }
     $obj->respuesta = true;
-    
+
   } else {
     $obj->respuesta = false;
-    
+
 }
 
-    
+
 
     ?>

@@ -49,6 +49,7 @@
                 <input type="button" id="siguiente" class="siguiente" value="Siguiente">
             </section>
 
+            <section id="paginador_examen"></section>
     </section>
 
     <?php include ("includes/footer.php");?>
@@ -56,23 +57,3 @@
 </html>
 
 
-<?php
-
-    if(isset($_POST["finalizar_examen"])){
-
-        $preguntas_respuestas = [];
-        for($i=0; $i<$n_preg; $i++){
-            for($j=0; $j<$n_resp; $j++){
-                if($_POST['opciones'.$i.''] == 'opcion'.$j.''){
-                    $a = $p[$i]->id;
-                    $b = $resp[$i][$j]->id;
-                    $preguntas_respuestas[$a] = $b;
-                }
-            }
-        }
-
-        BD::altaExamenHecho($examen, $u, "Now()", 3, json_encode($preguntas_respuestas));
-
-    }
-
-?>
