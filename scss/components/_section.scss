@@ -67,3 +67,41 @@
     text-align: center;
 
 }
+
+
+.altasMasivas{
+    margin-left: 30%;
+
+    h1{
+        font-size: $tamano_h1;     
+        font-weight:lighter;
+        margin-left: 7%;
+    }
+
+    textarea{
+      
+        border:8px solid #f6f6f6;
+        border-radius:3px;
+        background-color:#f6f6f6;
+        margin:8px 0;
+    }
+
+    button{
+        
+        text-decoration: none;
+        margin-left: 12%;
+        padding: 10px;
+        font-weight: 600;
+        font-size: 20px;
+        color: #ffffff;
+        background-color: $color_fondo;
+        border-radius: 6px;
+        border: 2px solid #007045;
+        width: 25%;
+    }
+
+    button:hover{
+        color: $color_fondo;
+        background-color: #ffffff;
+    }
+}

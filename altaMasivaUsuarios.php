@@ -17,7 +17,8 @@
     <section class="contenido">
         <!-- <input id="fileInput" type="file" size="50" onchange="processFiles(this.files)"> -->
        <section class="altasMasivas">
-        <textarea id="fileOutput" rows="20" cols="80"></textarea><br>
+           <h1>Alta Masiva de Usuarios</h1>
+        <textarea placeholder="Introduzca datos del usuario separados por ;" id="fileOutput" rows="20" cols="80"></textarea><br>
         <button id="enviar_archivo_usuarios" value="Enviar">Enviar</button>
        </section>
     </section>
@@ -39,17 +40,13 @@ $u = sesion::leer('usuario');
 if(isset($_POST["usuarios"])){
 
     $p = $_POST["usuarios"];
-   
+    $n_usuarios = $_POST["n_usuarios"];
 
     $a = json_decode($p, true);
 
-    $examen = BD::obtieneExamen($id);
-
-$e = $a[0][0];
-
-    BD::altaExamenHecho($examen, $u, "Now()", 3, $p);
-
-
+    for($i=0;$i<$n_usuarios;$i++){
+        BD::altaUsuario(new Usuario($a[$i][0],$a[$i][1],$a[$i][2],$a[$i][3],$a[$i][4],1,"",0));
+    }
     $obj->respuesta = true;
     
   } else {

@@ -63,7 +63,12 @@
                 if(login::identifica($usuario, $password, false)){
                     if(login::usuarioEstaLogueado()){
                         sesion::escribir('usuario', BD::obtieneUsuario($usuario, $password));
-                        header("Location: ./index.php");
+                        $u = BD::obtieneUsuario($usuario, $password);
+                        if($u->activo==0){
+                            header("Location: comprobarContrasena.php?id=$u->password");
+                        } else {
+                            header("Location: ./index.php");
+                        }
                     }
                 } else {
                     header("Location: loginUsuario.php");

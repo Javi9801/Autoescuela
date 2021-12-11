@@ -31,7 +31,7 @@ if($u->rol == "2"){
                 <li class="categoria"><a href="listadoUsuarios.php?pag=0">Usuarios</a>
                     <ul class="submenu">
                         <li><a href="altaUsuario.php">Alta Usuario</a></li>
-                        <li><a href="altaMasivaUsuarios.php">Alta Masiva usuarios</a></li>
+                        <li><a href="altaMasivaUsuarios.php">Alta Masiva Usuarios</a></li>
                     </ul>
                 </li>
 
@@ -44,7 +44,7 @@ if($u->rol == "2"){
                 <li class="categoria"><a href="listadoPreguntas.php?pag=0">Preguntas</a>
                     <ul class="submenu">
                         <li><a href="altaPregunta.php">Alta Pregunta</a></li>
-                        <li><a href="#">Alta Masiva Preguntas</a></li>
+                        <li><a href="altaMasivaPreguntas.php">Alta Masiva Preguntas</a></li>
                     </ul>
                 </li>
 
