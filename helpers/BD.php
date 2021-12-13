@@ -128,19 +128,6 @@ class BD{
     }
 
 
-    public static function modificaUsuario($id, $password, $nombre, $apellido){
-        $res = self::$con->prepare("Update Autoescuela.usuario set `password` = :password, `nombre` = :nombre, `apellidos` = :apellidos where `id` = :id");
-
-        $res->bindParam(':password',$password);
-        $res->bindParam(':nombre',$nombre);
-        $res->bindParam(':apellidos',$apellido);
-        $res->bindParam(':id',$id);
-
-
-
-        $res->execute();
-    }
-
     // public static function bajaUsuario(usuario $u){
     //     $correo = $u->getCorreo();
 
@@ -216,13 +203,14 @@ class BD{
         }
 
         public static function obtieneIdExamenHecho($id){
-            $res = self::$con->query("Select * from Autoescuela.examenHecho where idExamen = $id");
+            $res = self::$con->query("Select * from Autoescuela.examenHecho where id_Examen = $id order by fecha desc");
 
 
             if($res != false){
                 $registro = $res->fetch();
 
-                return $registo['ejecucion'];
+                return $registro['ejecucion'];
+                
             }
 
             return false;
@@ -263,7 +251,16 @@ class BD{
             return $u;
         }
     }
+    
 
+    public static function obtieneRespuestaCorrecta($id){
+        $res = self::$con->query("Select * from autoescuela.pregunta_respuesta where id_pregunta=$id");
+
+        if($res != false){
+            $registro = $res->fetch();
+            return $registro['id_respuesta'];
+        }
+    }
 
     public static function obtienePreguntasExamen($idExamen){
         $ret = array();
@@ -450,4 +447,72 @@ class BD{
             return (int)$registro;
         }
     }
+
+
+
+    //funciones de modificar datos de formularios
+
+
+    public static function modificaPregunta($id, $enunciado, $imagen, $tematica){
+        $res = self::$con->prepare("Update Autoescuela.pregunta set `enunciado` = :enunciado, `imagen` = :imagen, `tematica` = :tematica where `id` = :id");
+
+        $res->bindParam(':enunciado',$enunciado);
+        $res->bindParam(':imagen',$imagen);
+        $res->bindParam(':tematica',$tematica->id);
+        $res->bindParam(':id',$id);
+
+
+
+        $res->execute();
+    }
+
+     public static function modificaUsuario($id, $password, $nombre, $apellido){
+        $res = self::$con->prepare("Update Autoescuela.usuario set `password` = :password, `nombre` = :nombre, `apellidos` = :apellidos where `id` = :id");
+
+        $res->bindParam(':password',$password);
+        $res->bindParam(':nombre',$nombre);
+        $res->bindParam(':apellidos',$apellido);
+        $res->bindParam(':id',$id);
+
+
+
+        $res->execute();
+    }
+
+    public static function modificaUsuarioCompleto($id, $nombre, $apellido, $fecha, $foto){
+        $res = self::$con->prepare("Update Autoescuela.usuario set `fecha_nacimiento` = :fecha, `nombre` = :nombre, `apellidos` = :apellidos, `foto` = :foto where `id` = :id");
+
+        $res->bindParam(':foto',$foto);
+        $res->bindParam(':nombre',$nombre);
+        $res->bindParam(':apellidos',$apellido);
+        $res->bindParam(':fecha',$fecha);
+        $res->bindParam(':id',$id);
+
+
+
+        $res->execute();
+    }
+
+    public static function modificaRespuesta($enunciado, $id){
+        $res = self::$con->prepare("Update Autoescuela.respuesta set `enunciado` = :enunciado where `id` = :id");
+
+        $res->bindParam(':enunciado',$enunciado);
+        $res->bindParam(':id',$id);
+
+
+
+        $res->execute();
+    }
+
+    public static function modificaRespuestaCorrecta($idP, $idRespuesta){
+        $res = self::$con->prepare("Update Autoescuela.pregunta_respuesta set `id_respuesta` = :id_respuesta where `id_pregunta` = :id_pregunta");
+
+        $res->bindParam(':id_respuesta',$idRespuesta);
+        $res->bindParam(':id_pregunta',$idP);
+
+
+
+        $res->execute();
+    }
+
 }

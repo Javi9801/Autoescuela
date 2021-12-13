@@ -4,25 +4,22 @@ window.addEventListener("load",function(){
 
 
     aceptar.onclick = function(ev){
-      
-
         var formData = new FormData();
             
 
-                if(fichero.files.length>0){
-                    formData.append("imagen",fichero.files[0]);
-                }
+        if(fichero.files.length>0){
+            formData.append("imagen",fichero.files[0]);
+        }
 
-                fetch("altaPregunta.php",{
-                    method:"POST",
-                    body:formData
-                })
-                    .catch(error=>console.log("Error", error))
-                    .then(response => {
-                        if(response.ok){
-                            
-                        }
-                    })
-        
+        fetch("altaPregunta.php",{
+            method:"POST",
+            body:formData
+        })
+            .catch(error=>console.log("Error", error))
+            .then(response => {
+                if(response.ok){
+                    
+                }
+            })
     }
 })

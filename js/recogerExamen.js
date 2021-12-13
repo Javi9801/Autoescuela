@@ -1,7 +1,7 @@
 window.addEventListener("load", function(){
 
     const preguntas_examen = document.getElementById("preguntas_examen");
-    var id = getParameterByName("idExamen");
+    var id = getParameterByName("idFinal");
     const siguiente = document.getElementById("siguiente");
     const anterior = document.getElementById("anterior");
     const preguntas = document.getElementById("preguntas_examen");
@@ -108,6 +108,7 @@ function getParameterByName(name) {
 
 function creaPaginador(){
     const paginador = document.getElementById("paginador_examen");
+    const preguntasCorrectas = document.getElementById("preguntasCorrectas");
     var p = document.createElement("p");
     p.className = "paginador";
     var preguntas_examen = document.getElementById("preguntas_examen");

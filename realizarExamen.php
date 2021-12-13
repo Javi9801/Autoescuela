@@ -17,7 +17,7 @@
     include ("includes/nav.php");
     BD::conecta();
     $examen = BD::obtieneExamen($_GET['idExamen']);
-
+    
     ?>
 
     <section class="contenido">
@@ -48,6 +48,8 @@
                 <input type="button" id="anterior" class="anterior" value="Anterior">
                 <input type="button" id="siguiente" class="siguiente" value="Siguiente">
             </section>
+
+
 
             <section id="paginador_examen"></section>
     </section>

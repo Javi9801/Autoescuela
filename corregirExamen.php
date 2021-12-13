@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
     <script src="js/funcionesAdicionales.js"></script>
-    <script src="js/recogerExamen.js"></script>
+    <script src="js/corregirExamenes.js"></script>
     <!-- <script src="js/corregirExamenes.js"></script> -->
 
 </head>
@@ -18,6 +18,8 @@
     include ("includes/nav.php");
     BD::conecta();
     $examen = BD::obtieneExamen($_GET['idExamen']);
+    $preguntasCorrectas = [];
+    $preguntasCorrectas = JSON_decode(BD::obtieneIdExamenHecho($_GET['idExamen']));
 
     ?>
 
@@ -28,6 +30,7 @@
         sesion::iniciar();
         $u = sesion::leer('usuario');
         $rol = BD::obtieneRol($u->rol);
+        $input="";
 
         if($rol->id==1){
         ?>
@@ -43,6 +46,22 @@
         }
             ?>
                 </section>
+
+                <section id="preguntasCorrectas" hidden>
+
+                    <?php 
+                   
+                        for($i=0; $i<count($preguntasCorrectas);$i++){
+                            $pre = $preguntasCorrectas[$i]->pregunta;
+                            $re = $preguntasCorrectas[$i]->respuesta->id;
+                            $input.="<input type='text' id='preg_$pre' value='$re'>";
+                        }
+
+                        echo $input;
+                    ?>
+
+
+                </section>
             </form>
             <section class="botones_examen">
                 <input type="button" id="anteriorH" class="anterior" value="Anterior">
@@ -55,5 +74,4 @@
     <?php include ("includes/footer.php");?>
 </body>
 </html>
-
 
