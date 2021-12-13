@@ -51,6 +51,7 @@ if(isset($_POST["preguntas"])){
         BD::altaPregunta($pre);
         $idPregunta = BD::ultimoIdInsertado("autoescuela.pregunta");
         $pre->id = $idPregunta;
+        
         for($j=2; $j<=5;$j++){
             $r = new Respuesta($a[$i][$j], $idPregunta);
             BD::altaRespuesta($r);

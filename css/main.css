@@ -33,8 +33,7 @@ body {
   }
 }
 nav {
-  position: -webkit-sticky;
-  position: sticky;
+  position: absolute;
   width: 100%;
 }
 nav ul {
@@ -357,6 +356,16 @@ form span {
   color: black;
   border: 1px solid #ddd;
   background-color: white;
+}
+.paginador input {
+  padding: 8px 16px;
+  font-size: 1.2em;
+  color: black;
+  border: 1px solid #ddd;
+  background-color: white;
+}
+.paginador .act {
+  background-color: #00b7ff;
 }
 .paginador a.activo {
   background-color: #4CAF50;

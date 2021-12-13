@@ -13,7 +13,10 @@ window.addEventListener("load", function(){
         .then( res => res.json() )
         .then( datos => {
             pintaPreguntas(datos);
+            creaPaginador();
         });
+
+       
 
         siguiente.onclick = function(){
             for(let i=0; i<preguntas.children.length;i++){
@@ -24,6 +27,8 @@ window.addEventListener("load", function(){
                         preguntas.children[i].className="escondido";
                         preguntas.children[i+1].classList.remove("escondido");
                         preguntas.children[i+1].className="selec";
+                        document.getElementById(preguntas.children[i+1].id.substr(10)).className="act";
+                        document.getElementById(preguntas.children[i].id.substr(10)).className="";
                         break;
                     }
                 }
@@ -38,6 +43,9 @@ window.addEventListener("load", function(){
                         preguntas.children[i].className="escondido";
                         preguntas.children[i-1].classList.remove("escondido");
                         preguntas.children[i-1].className="selec";
+
+                        document.getElementById(preguntas.children[i-1].id.substr(10)).className="act";
+                        document.getElementById(preguntas.children[i].id.substr(10)).className="";
                         break;
                     }
                 }
@@ -83,7 +91,7 @@ window.addEventListener("load", function(){
 
         }
 
-        creaPaginador();
+       
 })
 
 
@@ -100,13 +108,36 @@ function getParameterByName(name) {
 
 function creaPaginador(){
     const paginador = document.getElementById("paginador_examen");
-    var p = document.createElement(p);
+    var p = document.createElement("p");
+    p.className = "paginador";
+    var preguntas_examen = document.getElementById("preguntas_examen");
 
-    for(let j=1; j<preguntas_examen.children.length;j++){
+    for(let j=0; j<preguntas_examen.children.length;j++){
         var b = document.createElement("input");
         b.setAttribute("type","button");
         b.id = preguntas_examen.children[j].getAttribute("id").substr(10);
-        b.innerHTML = j;
+        b.value = j;
+        b.addEventListener('click', function () {
+            for(let i=0; i<preguntas_examen.children.length;i++){
+                if(preguntas_examen.children[i].className=="selec"){
+                    preguntas_examen.children[i].className="escondido";
+                }
+            }
+                
+            for(let i=0; i<preguntas_examen.children.length;i++){
+                if(preguntas_examen.children[i].id=="pre_examen"+this.id){
+                    preguntas_examen.children[i].className="selec";
+
+                    for(let j=0; j<paginador.children[0].children.length;j++){
+                        paginador.children[0].children[j].className="";
+                    }
+
+                    this.className = "act";
+                } 
+                
+            }
+            
+        });
         p.appendChild(b);
 
         paginador.appendChild(p);

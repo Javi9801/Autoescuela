@@ -11,7 +11,7 @@
 
 
 nav{
-    position: sticky;
+    position: absolute;
     width: 100%;
 
     ul{
@@ -48,7 +48,9 @@ nav{
 //     @include animaciones(iluminar, 0.4s, linear);
 // }
 header{
-
+    // background-image: url(../recursos/zonaL.JPG);
+    // background-repeat: no-repeat;
+    // @include estableceColores();
     a{
         text-decoration: none;
         width: 160px;
@@ -58,6 +60,7 @@ header{
         cursor: pointer;
         font-size: 1em;
         @include estableceColores();
+        
 
     }
 
