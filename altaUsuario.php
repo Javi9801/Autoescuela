@@ -15,7 +15,7 @@
     <section class="contenido">
 
 
-        <form action="altaUsuario.php" method="POST">
+        <form class="form_usuario" action="altaUsuario.php" method="POST">
 
         <h1>Alta Usuario</h1>
 

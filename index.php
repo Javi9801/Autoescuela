@@ -22,7 +22,7 @@ if(!sesion::existe("login")){
 </head>
 <body>
     <?php include ("includes/nav.php");?>
-
+   <section id="imagen_index"> <img src="recursos/zonaL.JPG" alt=""></section>
     <?php include ("includes/footer.php");?>
 </body>
 </html>

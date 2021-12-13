@@ -17,6 +17,12 @@
     color: $color_texto;
 }
 
+@mixin estableceColoresPerfil {
+    background-color: black;
+    color: white;
+}
+
+
 @mixin estableceColoresHover {
     background-color: $color_fondo_hover;
     color: $color_texto_hover;

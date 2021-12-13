@@ -143,4 +143,37 @@ class Funciones{
         return $html;
     }
 
+    public static function pintaTablaExamenesHechos($tabla, $columnas, $pag, $limit, $rol){
+
+        $json = BD::obtieneJSON_Tabla($tabla, $pag, 4);
+
+        $vector = json_decode($json, true);
+
+        $html = '<table id="tablaExamenesHechos" class="tabla"><thead><tr>';
+
+
+        foreach($columnas as $i){
+            $html.='<th>'.$i.'</th>';
+
+        }
+        $html.='</tr></thead>';
+
+
+        foreach($vector as $i){
+            $html.='<tr>';
+            $html.='<td>'.$i['id'].'</td>';
+            $html.='<td>'.$i['id_examen'].'</td>';
+            $html.='<td>'.BD::obtieneUsuarioExamen($i['id_alumno'])->email.'</td>';
+            $html.='<td>'.$i['fecha'].'</td>';
+            $html.='<td>'.$i['calificacion'].'</td>';
+
+            $html.='<td><a class="enlaces" id=_'.$i['id'].' href="corregirExamen.php?idExamen='.$i['id_examen'].'">Corregir</a></td>';
+            $html.='</tr>';
+            }
+
+            $html.='</table>';
+
+        return $html;
+    }
+
 }

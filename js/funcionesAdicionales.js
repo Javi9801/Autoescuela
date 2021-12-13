@@ -1,5 +1,6 @@
 window.addEventListener("load", function(){
     const imagen = document.getElementById("imagen_perfil");
+    const cerrar = document.getElementById("imagen_cerrar");
     const div = document.getElementById("informacion_usuario");
 
     var enlaces = document.getElementsByClassName("enlaces");
@@ -7,11 +8,12 @@ window.addEventListener("load", function(){
     for(let i=0; i<enlaces.length;i++){
         enlaces[i].onclick = function(ev){
             ev.preventDefault();
-            alert(enlaces[i].getAttribute("id").substr(1));
             // location.href = "index.php";
-            location.href="realizarExamen.php?idExamen="+enlaces[i].getAttribute("id").substr(1)+"";
-
-
+            if(enlaces[i].innerHTML =="Corregir"){
+                location.href="corregirExamen.php?idExamen="+enlaces[i].getAttribute("id").substr(1)+"";
+            } else {
+                location.href="realizarExamen.php?idExamen="+enlaces[i].getAttribute("id").substr(1)+"";
+            }
         }
     }
 
@@ -22,6 +24,11 @@ window.addEventListener("load", function(){
             div.style.visibility = "hidden";
 
         }
+
+    }
+
+    cerrar.onclick = function(){
+        window.location.href = "loginout.php";
 
     }
 

@@ -13,7 +13,7 @@
 <body>
 
     <section class="imagen_form">
-        <p><img src="recursos/logo.png"  width="200px" height="200px" alt=""></p>
+        <p><img src="recursos/logo.png"  width="150px" height="150px" alt=""></p>
     </section>
     <form id="login_form" class="login" action="" method="POST">
 

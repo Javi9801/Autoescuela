@@ -1,7 +1,8 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #A1A5A8;
+    background-color: white;
+    font-family: "sans-serif";
     // background-image: url(../recursos/zonaL.JPG);
     // background-repeat: no-repeat
 }
@@ -14,5 +15,6 @@ body{
 @import 'components/table';
 @import 'components/section';
 @import 'components/formulario';
+@import 'components/scroll';
 @import 'components/inputs';
 @import 'components/paginator';

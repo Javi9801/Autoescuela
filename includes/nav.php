@@ -14,19 +14,21 @@ if($u->rol == "2"){
         <section>
             <img class="izquierda" src="recursos/logo.png" width="120px" height="80px" alt="">
 
-            <img class="derecha" id="imagen_perfil" src="recursos/perfil.png" width="100px" alt="">
+            <img class="derecha" id="imagen_perfil" src="recursos/perfil.png" alt="">
+            <img class="derecha" id="imagen_cerrar" title="cerrar sesion" src="recursos/cerrarS.jpg" alt="">
 
             <section id="informacion_usuario" class="perfil">
                 <ul>
 
                     <li><a href="inicio.php">Usuario: <?php echo $u->email ?></a></li>
-                    <li><a href="inicio.php">Editar Usuario</a></li>
-                    <li><a href="loginout.php">Cerrar Sesion</a></li>
+
                 </ul>
             </section>
         </section>
 
-        <nav>
+    </header>
+
+    <nav>
             <ul>
                 <li class="categoria"><a href="listadoUsuarios.php?pag=0">Usuarios</a>
                     <ul class="submenu">
@@ -56,8 +58,6 @@ if($u->rol == "2"){
                 </li>
             </ul>
         </nav>
-    </header>
-
 <?php
 
 } else {
@@ -68,21 +68,23 @@ if($u->rol == "2"){
 <section>
     <img class="izquierda" src="recursos/logo.png" width="80px" alt="">
 
-    <img class="derecha" id="imagen_perfil" src="recursos/perfil.png" width="100px" alt="">
+    <img class="derecha" id="imagen_perfil" src="recursos/perfil.png" alt="">
+    <img class="derecha" id="imagen_cerrar" title="cerrar sesion" src="recursos/cerrarS.jpg" alt="">
 
     <section id="informacion_usuario" class="perfil">
         <ul>
 
             <li><a href="inicio.php">Usuario: <?php echo $u->email ?></a></li>
-            <li><a href="inicio.php">Editar Usuario</a></li>
-            <li><a href="loginout.php">Cerrar Sesion</a></li>
         </ul>
     </section>
 </section>
 
+
+</header>
+
 <nav>
     <ul>
-        <li class="categoria"><a href="#">Historico Examenes</a>
+        <li class="categoria"><a href="listadoExamenesHechos.php">Historico Examenes</a>
         </li>
         <li class="categoria"><a href="#">Examen aleatorio</a>
         </li>
@@ -91,7 +93,6 @@ if($u->rol == "2"){
 
     </ul>
 </nav>
-</header>
     <?php
     }
 }

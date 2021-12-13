@@ -46,6 +46,23 @@ class BD{
         return false;
     }
 
+    public static function obtieneUsuarioExamen($id){
+        $res = self::$con->query("Select * from Autoescuela.usuario where id = '$id'");
+
+
+        if($res != false){
+            $registro = $res->fetch();
+
+            $u = new usuario($registro['email'],$registro['nombre'],$registro['apellidos'],$registro['password'],$registro['fecha_nacimiento'],$registro['rol'],$registro['foto'],$registro['activo']);
+
+            $u->id = $registro['id'];
+
+            return $u;
+        }
+
+        return false;
+    }
+
     public static function existeUsuario($email, $password){
         $res = self::$con->query("Select * from Autoescuela.usuario where email = '$email' and password = '$password'");
 
@@ -193,6 +210,19 @@ class BD{
                 $u->id = $registro['id'];
 
                 return $u;
+            }
+
+            return false;
+        }
+
+        public static function obtieneIdExamenHecho($id){
+            $res = self::$con->query("Select * from Autoescuela.examenHecho where idExamen = $id");
+
+
+            if($res != false){
+                $registro = $res->fetch();
+
+                return $registo['ejecucion'];
             }
 
             return false;
