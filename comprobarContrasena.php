@@ -20,7 +20,7 @@ if(isset($_GET['id'])){
     <script src="js/cargaImagenes.js"></script>
 </head>
 <body>
-    <?php include ("includes/nav.php");?>
+
 
     <section class="contenido">
         <form action="" method="POST">

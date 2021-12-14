@@ -68,7 +68,7 @@ if($u->rol=="2"){
         // $activo = $_POST['activo'];
 
 
-        $p = new Usuario($email,$nombre,$apellidos,$idRecuperar,$fecha_nacimiento,1,"jorge.png",1);
+        $p = new Usuario($email,$nombre,$apellidos,$idRecuperar,$fecha_nacimiento,1,"",1);
         BD::altaUsuario($p);
 
         $p->id = BD::ultimoIdInsertado("autoescuela.usuario");
