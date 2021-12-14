@@ -9,7 +9,7 @@ $html='
 </head>
 <body>
 
-<h2>Ingredientes para aprobar DWES</h2>
+<h2>Ejemplo de prueba</h2>
 <p>Ingredientes:</p>
 <dl>
 <dd>Perseverancia</dd>
@@ -33,7 +33,7 @@ $mipdf ->render();
 
 # Creamos un fichero
 $pdf = $mipdf->output();
-$filename = "HeavenTicket.pdf";
+$filename = "Ejemplo.pdf";
 file_put_contents($filename, $pdf);
 
 # Enviamos el fichero PDF al navegador.

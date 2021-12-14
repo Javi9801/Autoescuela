@@ -210,11 +210,38 @@ class BD{
                 $registro = $res->fetch();
 
                 return $registro['ejecucion'];
-                
+
             }
 
             return false;
         }
+
+    public static function compruebaExamenPregunta($id){
+        $res = self::$con->query("Select * from Autoescuela.examen_pregunta where id_Pregunta = $id");
+
+
+        if($res != false){
+            $registro = $res->fetch();
+
+            return $registro['id_Examen'];
+
+        }
+
+        return false;
+    }
+
+    public static function eliminaPregunta($id){
+
+        $res = self::$con->prepare("Delete from autoescuela.pregunta_respuesta where id_pregunta=$id");
+        $res->execute();
+
+        $res1 = self::$con->prepare("Delete from autoescuela.respuesta where id_pregunta=$id");
+        $res1->execute();
+
+        $res2 = self::$con->prepare("Delete from autoescuela.pregunta where id=$id");
+        $res2->execute();
+
+    }
 
 
     //Metodos relacionados con las preguntas y respuestas
@@ -251,7 +278,7 @@ class BD{
             return $u;
         }
     }
-    
+
 
     public static function obtieneRespuestaCorrecta($id){
         $res = self::$con->query("Select * from autoescuela.pregunta_respuesta where id_pregunta=$id");

@@ -34,11 +34,7 @@
             <label for="usuario_imagen">Foto Usuario</label>
             <p><input type="file" id="usuario_imagen" name="usuario_imagen" value=""></p>
 
-            <label for="usuario_rol">Rol</label>
-            <?php
-                    require_once("helpers/funciones.php");
-                    echo(funciones::selectDinamico("usuario_rol", "rol"));
-                ?>
+
             <p><input type="submit" id="usuario_enviar" name="usuario_enviar" class="btn_form" value="Aceptar"></p>
 
         </form>

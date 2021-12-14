@@ -16,7 +16,7 @@
 
         <h1 class="h1_preguntas">Listado Usuarios</h1>
 
-      
+
 
         <?php
         require_once("cargadores/cargarHelper.php");
@@ -48,7 +48,7 @@
         $tabla =  Funciones::pintaTablaUsuarios("Autoescuela.usuario", $cabeceras, $total, 4);
         echo $tabla;
 
-        
+
         $registros = BD::obtienefilas("Autoescuela.usuario");
         $enlace = '<p class="paginador">';
         $aux = round($registros/4);

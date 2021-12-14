@@ -12,7 +12,7 @@ if($u->rol == "2"){
     <header>
 
         <section>
-            <img class="izquierda" src="recursos/logo.png" width="120px" height="80px" alt="">
+            <img class="izquierda" src="recursos/logo.png" width="100px" height="80px" alt="">
 
             <img class="derecha" id="imagen_perfil" src="recursos/perfil.png" alt="">
             <img class="derecha" id="imagen_cerrar" title="cerrar sesion" src="recursos/cerrarS.jpg" alt="">

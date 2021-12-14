@@ -1,7 +1,6 @@
 window.addEventListener("load", function(){
 
     const preguntas_examen = document.getElementById("preguntas_examen");
-    var id = getParameterByName("idFinal");
     const siguiente = document.getElementById("siguiente");
     const anterior = document.getElementById("anterior");
     const preguntas = document.getElementById("preguntas_examen");
@@ -9,14 +8,14 @@ window.addEventListener("load", function(){
     const idFinal = document.getElementById("idFinal").innerHTML;
 
 
-    fetch('recogePreguntasExamen.php?idExamen='+id+'')
+    fetch('recogePreguntasExamen.php?idExamen='+idFinal+'')
         .then( res => res.json() )
         .then( datos => {
             pintaPreguntas(datos);
             creaPaginador();
         });
 
-       
+
 
         siguiente.onclick = function(){
             for(let i=0; i<preguntas.children.length;i++){
@@ -91,7 +90,7 @@ window.addEventListener("load", function(){
 
         }
 
-       
+
 })
 
 
@@ -124,7 +123,7 @@ function creaPaginador(){
                     preguntas_examen.children[i].className="escondido";
                 }
             }
-                
+
             for(let i=0; i<preguntas_examen.children.length;i++){
                 if(preguntas_examen.children[i].id=="pre_examen"+this.id){
                     preguntas_examen.children[i].className="selec";
@@ -134,10 +133,10 @@ function creaPaginador(){
                     }
 
                     this.className = "act";
-                } 
-                
+                }
+
             }
-            
+
         });
         p.appendChild(b);
 

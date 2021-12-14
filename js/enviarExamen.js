@@ -13,7 +13,7 @@ window.addEventListener("load", function(){
 
             var p = new Array();
             for(let i=1; i<preguntas.length;i++){
-                var ids = preguntas[i].innerHTML.substr(0,2);
+                var ids = preguntas[i].innerHTML.substr(4,1);
                 p.push(ids);
             }
             formData.append("descripcion",descripcion.value);

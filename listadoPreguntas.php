@@ -16,7 +16,7 @@
 
         <h1 class="h1_preguntas">Listado Preguntas</h1>
 
-      
+
 
         <?php
         require_once("cargadores/cargarHelper.php");
@@ -48,7 +48,7 @@
         $tabla =  Funciones::pintaTablaPreguntas("Autoescuela.pregunta", $cabeceras, $total, 4);
         echo $tabla;
 
-        
+
         $registros = BD::obtienefilas("Autoescuela.pregunta");
         $enlace = '<p class="paginador">';
         $aux = round($registros/4);
@@ -66,6 +66,7 @@
             }
             $enlace.="<a class='$act' href='listadoPreguntas.php?pag=$i'>$i</a>";
         }
+
 
         $enlace.= "<a href='listadoPreguntas.php?pag=$mas1'>&gt;</a>";
 

@@ -62,7 +62,7 @@ class Funciones{
             $html.='<td>'.$i['enunciado'].'</td>';
             $html.='<td>'.BD::obtieneTematica($i['tematica'])->descripcion.'</td>';
             $html.='<td><img src="data:image/jpg;base64,'.$i["imagen"].'"width=100px"></td>';
-            $html.='<td><a href="verPregunta.php?idPregunta='.$i['id'].'"><img src="./recursos/editar.png" width="30px"></a></td>';
+            $html.='<td><a href="verPregunta.php?idPregunta='.$i['id'].'"><img src="./recursos/editar.png" width="30px"></a><a href="eliminarPregunta.php?idPregunta='.$i['id'].'"><img src="./recursos/eliminar.png" width="30px"></a></td>';
             $html.='</tr>';
             }
 
@@ -97,7 +97,7 @@ class Funciones{
             $html.='<td>'.BD::obtieneRol($i['rol'])->descripcion.'</td>';
             $html.='<td><img src="data:image/jpg;base64,'.$i["foto"].'"width=100px"></td>';
             $html.='<td>'.$i['activo'].'</td>';
-            $html.='<td><a href="verUsuario.php?idUsuario='.$i['id'].'"><img src="./recursos/editar.png" width="50px"></a></td>';
+            $html.='<td><a href="verUsuario.php?idUsuario='.$i['id'].'"><img src="./recursos/editar.png" width="30px"></a></td>';
             $html.='</tr>';
             }
 
