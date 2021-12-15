@@ -16,7 +16,7 @@ window.addEventListener("load", function(){
                 campos[i].classList.remove("error");
                 j++;
 
-                if(j==4){
+                if(j==campos.length){
                     submit[0].removeAttribute("disabled");
                 }
             }

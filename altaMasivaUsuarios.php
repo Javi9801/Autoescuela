@@ -18,7 +18,7 @@
         <!-- <input id="fileInput" type="file" size="50" onchange="processFiles(this.files)"> -->
        <section class="altasMasivas">
            <h1>Alta Masiva de Usuarios</h1>
-        <textarea placeholder="email;nombre;apellido;contraseña;fecha" id="fileOutput" rows="15" cols="80"></textarea><br>
+        <textarea placeholder="email;nombre;apellido;contraseña;fecha[yyyy-mm-dd]" id="fileOutput" rows="15" cols="80"></textarea><br>
         <button id="enviar_archivo_usuarios" value="Enviar">Enviar</button>
        </section>
     </section>

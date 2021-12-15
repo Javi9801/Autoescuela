@@ -133,7 +133,7 @@ class Funciones{
             if($rol==1){
                 $html.='<td><a class="enlaces" id=_'.$i['id'].' href="realizarExamen.php?idExamen='.$i['id'].'">Realizar</a></td>';
             } else {
-                $html.='<td><a href="#">Buscar</a></td>';
+                $html.='<td><a id=_'.$i['id'].' href="verExamen.php?idExamen='.$i['id'].'"><img src="./recursos/editar.png" width="30px"></a></td>';
             }
             $html.='</tr>';
             }

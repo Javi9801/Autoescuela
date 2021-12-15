@@ -37,7 +37,7 @@
             </section>
 
 
-                <img class="central" src="recursos/flechas.jpg" width="100px" alt="">
+                <img class="central" id="marcados" src="recursos/flechas.jpg" width="100px" alt="">
 
             <section id="contenedor_preguntas_examen" name="contenedor_preguntas_examen" class="contenedorP">
 

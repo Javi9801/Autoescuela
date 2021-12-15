@@ -12,6 +12,7 @@ window.addEventListener("load", function(){
     var preguntas_examen = document.getElementById("contenedor_preguntas_examen");
     const izq = document.getElementById("contenedor_preguntas");
     const divs=izq.getElementsByTagName("div");
+    const marcados = this.document.getElementById("marcados");
 
     const filtro=document.getElementById("texto");
 
@@ -57,6 +58,17 @@ window.addEventListener("load", function(){
 
     }
 
+    preguntas.ondragover = function(ev){
+        ev.preventDefault();
+    }
+
+    preguntas.ondrop = function(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+
+
     preguntas_examen.ondragover = function(ev){
         ev.preventDefault();
     }
@@ -100,10 +112,21 @@ window.addEventListener("load", function(){
                 this.style.color="black";
             }
 
+            d.ondblclick = function(){
+                this.classList.add("marcado");
+            }
             preguntas.appendChild(d);
 
         }
     }
+
+    marcados.onclick = function(){
+        var preguntas_marcadas = document.getElementsByClassName("marcado");
+
+        for(let i=0; i<preguntas_marcadas.length-1;i++){
+            preguntas_examen.appendChild(preguntas_marcadas[i]);
+        }
+    }   
 })
 
 
