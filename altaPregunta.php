@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="js/funcionesAdicionales.js"></script>
     <script src="js/cargaImagenes.js"></script>
+    <script src="js/validar.js"></script>
 </head>
 <body>
     <?php include ("includes/nav.php");?>
@@ -27,7 +28,7 @@
             </p>
 
             <label for="pregunta_enunciado">Enunciado</label>
-            <p><textarea name="pregunta_enunciado" id="pregunta_enunciado" cols="30" rows="10"></textarea></p>
+            <p><textarea name="pregunta_enunciado" class="campos" id="pregunta_enunciado" cols="30" rows="10"></textarea></p>
 
             <p>
                 <label for="pregunta_imagen">Imagen </label>
@@ -38,21 +39,21 @@
 
             <p>
                 <label for="pregunta_respuesta_1">Opcion 1 </label>
-                <input type="text" id="pregunta_respuesta_1" name="pregunta_respuesta_1" value="">
+                <input type="text" id="pregunta_respuesta_1" class="campos" name="pregunta_respuesta_1" value="">
                 <input type="radio" id="opcion1" value="opcion1" name="opciones"> Correcta
             </p>
 
 
             <p>
                 <label for="pregunta_respuesta_2">Opcion 2 </label>
-                <input type="text" id="pregunta_respuesta_2" name="pregunta_respuesta_2" value="">
+                <input type="text" id="pregunta_respuesta_2" class="campos" name="pregunta_respuesta_2" value="">
                 <input type="radio" id="opcion2" value="opcion2" name="opciones"> Correcta
 
             </p>
 
             <p>
                 <label for="pregunta_respuesta_3">Opcion 3 </label>
-                <input type="text" id="pregunta_respuesta_3" name="pregunta_respuesta_3" value="">
+                <input type="text" id="pregunta_respuesta_3" class="campos" name="pregunta_respuesta_3" value="">
                 <input type="radio" id="opcion3" value="opcion3" name="opciones"> Correcta
 
             </p>
@@ -60,7 +61,7 @@
 
             <p>
                 <label for="pregunta_respuesta_4">Opcion 4</label>
-                <input type="text" id="pregunta_respuesta_4" name="pregunta_respuesta_4" value="">
+                <input type="text" id="pregunta_respuesta_4" class="campos" name="pregunta_respuesta_4" value="">
                 <input type="radio" id="opcion4" value="opcion4" name="opciones"> Correcta
             </p>
 
@@ -85,7 +86,7 @@ require_once("cargadores/cargarIncludes.php");
 
 
 
-    if(isset($_POST["pregunta_enviar"])){
+    if(isset($_POST["pregunta_enviar"]) && isset($_POST["opciones"])){
         BD::conecta();
         $enunciado = $_POST['pregunta_enunciado'];
         $tematica = BD::obtieneTematica($_POST['pregunta_tematica']);

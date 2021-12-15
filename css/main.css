@@ -368,6 +368,10 @@ form span {
     background-color: #50C15D;
   }
 }
+.error {
+  border: 5px solid red;
+}
+
 .btn_enviar {
   width: 150px;
   height: 40px;

@@ -70,6 +70,7 @@ window.addEventListener("load", function(){
             var js = JSON.stringify(f);
 
 
+            //creo el formData para emviar los datos del examen
                 var formData = new FormData();
 
                 formData.append("preguntas_respuestas",js);
@@ -105,6 +106,7 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+//funcion para crear el paginador del examen
 function creaPaginador(){
     const paginador = document.getElementById("paginador_examen");
     const preguntasCorrectas = document.getElementById("preguntasCorrectas");

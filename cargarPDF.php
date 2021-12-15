@@ -22,13 +22,22 @@ $html='
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Pedazo de PDF</title>
+<title>Resultados examen</title>
 </head>
 <body>
 
 <h2>Resultado Examen</h2>
-<p>Has sacado un '.$nota.' de '.count($respuestasRespondidas).'</p>
+<p>Has sacado un '.$nota.' de '.count($respuestasRespondidas).'</p>';
 
+foreach($respuestasRespondidas as $i){
+    $c = BD::obtieneRespuestaCorrecta($i->pregunta);
+    if($i->respuesta->id == $c){
+        $html.='<p>A la pregunta <strong>'.BD::obtienePregunta($i->pregunta)->enunciado.' </strong>has respondido <strong>'.$i->respuesta->enunciado.' </strong>y es la respuesta correcta</p>';
+    } else {
+        $html.='<p>A la pregunta <strong> '.BD::obtienePregunta($i->pregunta)->enunciado.' </strong>has respondido <strong>'.$i->respuesta->enunciado.'</strong> y la respuesta correcta es <strong>'.BD::obtieneRespuesta($c)->enunciado.'</strong></p>';
+    }
+}
+$html.='
 </body>
 </html>';
 $mipdf = new Dompdf();
@@ -43,7 +52,7 @@ $mipdf ->render();
 
 # Creamos un fichero
 $pdf = $mipdf->output();
-$filename = "Ejemplo.pdf";
+$filename = "ResultadosExamen".$examen->descripcion.".pdf";
 file_put_contents($filename, $pdf);
 
 # Enviamos el fichero PDF al navegador.

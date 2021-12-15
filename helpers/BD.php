@@ -329,6 +329,20 @@ class BD{
 
     }
 
+    public static function obtieneRespuesta($id){
+        $ret = array();
+
+        $res = self::$con->query("Select * from autoescuela.respuesta where id = $id");
+
+        while($registro = $res->fetch()){
+            $p = new respuesta($registro['enunciado'], $registro['id_pregunta']);
+            $p->id = $registro['id'];
+           
+        }
+        return $p;
+
+    }
+
     //Metodo que inserta una respuesta
 
 

@@ -9,6 +9,7 @@
     <script src="js/cargaPreguntasExamen.js"></script>
     <script src="js/funcionesAdicionales.js"></script>
     <script src="js/enviarExamen.js"></script>
+    <script src="js/validar.js"></script>
 </head>
 <body>
     <?php include ("includes/nav.php");?>
@@ -20,11 +21,11 @@
 
             <p>
                 <label for="examen_descripcion">Descripcion</label>
-                <input type="text" id="examen_descripcion" name="examen_descripcion" value="">
+                <input type="text" id="examen_descripcion" class="campos" name="examen_descripcion" value="">
                 <label for="examen_duracion">  Duracion</label>
-                <input type="number" id="examen_duracion" name="examen_duracion" value="">
+                <input type="number" id="examen_duracion" class="campos" name="examen_duracion" value="">
 
-                <input type="submit" id="examen_enviar" name="examen_enviar" class="btn_examen" value="Enviar Examen">
+                <input type="submit" id="examen_enviar" name="examen_enviar" class="btn_form" value="Enviar Examen">
             </p>
 
             <p>Filtro
