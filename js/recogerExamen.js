@@ -138,6 +138,19 @@ function creaPaginador(){
             }
 
         });
+
+        // b.addEventListener('dblclick', function () {
+        //     this.parentElement
+        //     for(let i=0; i<preguntas_examen.children.length;i++){
+        //         if(preguntas_examen.children[i].id=="pre_examen"+this.id){
+        //             if(preguntas_examen.children[i].classList.contains('dudosa')){
+        //                 preguntas_examen.children[i].classList.remove('dudosa');
+        //             } else {
+        //                 preguntas_examen.children[i].classList.add('dudosa');
+        //             }
+        //         }
+        //     }
+        // });
         p.appendChild(b);
 
         paginador.appendChild(p);
@@ -145,8 +158,10 @@ function creaPaginador(){
     }
 }
 
+//funcion que pinta las preguntas procedentes de la llamada ajax
 function pintaPreguntas(datos){
     var i = 1;
+    shuffle(datos);
     for (let valor of datos){
 
         var d = document.createElement("section");
@@ -167,6 +182,7 @@ function pintaPreguntas(datos){
         d.appendChild(t);
         var j=1;
 
+        shuffle(valor.respuestas);
         for(let r of valor.respuestas){
 
             var p = document.createElement("p");
@@ -235,3 +251,22 @@ function pintaRespuestas(d, respuestas){
 
     }
 }
+
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }

@@ -72,7 +72,7 @@ window.addEventListener("load", function(){
         for (let valor of datos){
 
             var d = document.createElement("div");
-            d.innerHTML = "ID: "+valor.id+"<br>Enunciado: "+valor.enunciado+"<br>Tematica: "+valor.tematica.descripcion;
+            d.innerHTML = "ID: "+valor.id+" <br>Enunciado: "+valor.enunciado+"<br>Tematica: "+valor.tematica.descripcion;
             d.setAttribute("id", 'p_'+valor.id);
             d.setAttribute("draggable", true);
             //d.setAttribute("ondragstart", drag(event));

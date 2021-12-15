@@ -203,7 +203,7 @@ class BD{
         }
 
         public static function obtieneIdExamenHecho($id){
-            $res = self::$con->query("Select * from Autoescuela.examenHecho where id_Examen = $id order by fecha desc");
+            $res = self::$con->query("Select * from Autoescuela.examenHecho where id_Examen = $id order by id desc");
 
 
             if($res != false){

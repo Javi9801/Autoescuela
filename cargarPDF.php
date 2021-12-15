@@ -1,6 +1,23 @@
 <?php
 require_once 'vendor/autoload.php';
 use Dompdf\Dompdf;
+
+require_once("cargadores/cargarHelper.php");
+require_once("cargadores/cargarEntidades.php");
+require_once("cargadores/cargarIncludes.php");
+BD::conecta();
+$examen = BD::obtieneExamen($_GET["idExamen"]);
+$respuestasRespondidas = [];
+$respuestasRespondidas = JSON_decode(BD::obtieneIdExamenHecho($_GET["idExamen"]));
+$nota = 0;
+
+foreach($respuestasRespondidas as $i){
+    $c = BD::obtieneRespuestaCorrecta($i->pregunta);
+    if($i->respuesta->id == $c){
+        $nota++;
+    }
+}
+
 $html='
 <html>
 <head>
@@ -9,16 +26,9 @@ $html='
 </head>
 <body>
 
-<h2>Ejemplo de prueba</h2>
-<p>Ingredientes:</p>
-<dl>
-<dd>Perseverancia</dd>
-<dd>Constancia</dd>
-<dd>Optimismo</dd>
-<dd>Autoestima</dd>
-<dd>Trabajo en Equipo</dd>
-<dd>Jamón Pata Negra</dd>
-</dl>
+<h2>Resultado Examen</h2>
+<p>Has sacado un '.$nota.' de '.count($respuestasRespondidas).'</p>
+
 </body>
 </html>';
 $mipdf = new Dompdf();
