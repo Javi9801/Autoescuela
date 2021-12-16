@@ -167,7 +167,7 @@ class Funciones{
             $html.='<td>'.$i['fecha'].'</td>';
             $html.='<td>'.$i['calificacion'].'</td>';
 
-            $html.='<td><a class="" id=_'.$i['id'].' href="corregirExamen.php?idExamen='.$i['id_examen'].'">Corregir  </a><a class="" id=_'.$i['id'].' title="cargar PDF" href="cargarPDF.php?idExamen='.$i['id_examen'].'"><img src="./recursos/pdf.png" width="30px"></a></td>';
+            $html.='<td><a class="" id=_'.$i['id'].' href="corregirExamen.php?idExamen='.$i['id_examen'].'&id='.$i['id'].'">Corregir  </a><a class="" id=_'.$i['id'].' title="cargar PDF" href="cargarPDF.php?idExamen='.$i['id_examen'].'"><img src="./recursos/pdf.png" width="30px"></a></td>';
             $html.='</tr>';
             }
 

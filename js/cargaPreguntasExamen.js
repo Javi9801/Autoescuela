@@ -123,10 +123,10 @@ window.addEventListener("load", function(){
     marcados.onclick = function(){
         var preguntas_marcadas = document.getElementsByClassName("marcado");
 
-        for(let i=0; i<preguntas_marcadas.length-1;i++){
+        for(let i=0; i<preguntas_marcadas.length;i++){
             preguntas_examen.appendChild(preguntas_marcadas[i]);
         }
-    }   
+    }
 })
 
 

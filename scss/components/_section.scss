@@ -118,3 +118,25 @@
         width: 100%;
     }
 }
+
+#muestraRespuestas{
+    margin-left: 30%;
+    background-color: $color_fondo;
+    padding: 10px;
+    border: 3px solid black;
+    width: 35%;
+}
+
+em{
+    font-size: 1.2em;
+}
+
+    .cor{
+        color: rgb(0, 37, 0);
+        font-weight: bold;
+    }
+
+    .inc{
+        color: red;
+        font-weight: bold;
+    }

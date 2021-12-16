@@ -277,6 +277,28 @@ footer {
   width: 100%;
 }
 
+#muestraRespuestas {
+  margin-left: 30%;
+  background-color: #50C15D;
+  padding: 10px;
+  border: 3px solid black;
+  width: 35%;
+}
+
+em {
+  font-size: 1.2em;
+}
+
+.cor {
+  color: #002500;
+  font-weight: bold;
+}
+
+.inc {
+  color: red;
+  font-weight: bold;
+}
+
 form {
   margin-left: 30%;
   background-color: #50C15D;
@@ -454,4 +476,10 @@ form span {
 }
 .paginador a:hover:not(.activo) {
   background-color: #ddd;
+}
+.paginador .correcto {
+  background-color: green;
+}
+.paginador .incorrecto {
+  background-color: red;
 }/*# sourceMappingURL=main.css.map */

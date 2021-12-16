@@ -202,8 +202,8 @@ class BD{
             return false;
         }
 
-        public static function obtieneIdExamenHecho($id){
-            $res = self::$con->query("Select * from Autoescuela.examenHecho where id_Examen = $id order by id desc");
+        public static function obtieneIdExamenHecho($idE, $id){
+            $res = self::$con->query("Select * from Autoescuela.examenHecho where id_Examen ='$idE' and id = '$id'");
 
 
             if($res != false){
@@ -337,7 +337,7 @@ class BD{
         while($registro = $res->fetch()){
             $p = new respuesta($registro['enunciado'], $registro['id_pregunta']);
             $p->id = $registro['id'];
-           
+
         }
         return $p;
 

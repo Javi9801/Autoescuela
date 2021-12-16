@@ -4,7 +4,7 @@ window.addEventListener("load", function(){
     const siguiente = document.getElementById("siguienteH");
     const anterior = document.getElementById("anteriorH");
     const preguntas = document.getElementById("preguntas_examenH");
-    
+
 
     fetch('recogePreguntasExamen.php?idExamen='+id+'')
     .then( res => res.json() )
@@ -15,7 +15,7 @@ window.addEventListener("load", function(){
 
 
 
-    
+
 siguiente.onclick = function(){
     for(let i=0; i<preguntas.children.length;i++){
 
@@ -119,33 +119,27 @@ function creaPaginador(){
     var p = document.createElement("p");
     p.className = "paginador";
     var preguntas_examen = document.getElementById("preguntas_examenH");
+    const respuestasCorrectas = document.getElementById("preguntasCorrectas");
 
     for(let j=0; j<preguntas_examen.children.length;j++){
         var b = document.createElement("input");
         b.setAttribute("type","button");
-        b.id = preguntas_examen.children[j].getAttribute("id").substr(10);
-        b.value = j;
-        b.addEventListener('click', function () {
-            for(let i=0; i<preguntas_examen.children.length;i++){
-                if(preguntas_examen.children[i].className=="selec"){
-                    preguntas_examen.children[i].className="escondido";
+        b.id = "_"+ preguntas_examen.children[j].getAttribute("id").substr(10);
+        b.value = j;7
+
+
+
+
+        for(let k=0; k<respuestasCorrectas.children.length;k++){
+            if(b.id.substr(1) == respuestasCorrectas.children[k].id.substr(5)){
+                if(respuestasCorrectas.children[k].getAttribute("resp") == respuestasCorrectas.children[k].value){
+                    b.classList.add("correcto");
+                } else {
+                    b.classList.add("incorrecto");
                 }
             }
-                
-            for(let i=0; i<preguntas_examen.children.length;i++){
-                if(preguntas_examen.children[i].id=="pre_examen"+this.id){
-                    preguntas_examen.children[i].className="selec";
+        }
 
-                    for(let j=0; j<paginador.children[0].children.length;j++){
-                        paginador.children[0].children[j].className="";
-                    }
-
-                    this.className = "act";
-                } 
-                
-            }
-            
-        });
         p.appendChild(b);
 
         paginador.appendChild(p);

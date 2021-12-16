@@ -17,9 +17,12 @@
     require_once("cargadores/cargarEntidades.php");
     include ("includes/nav.php");
     BD::conecta();
-    $examen = BD::obtieneExamen($_GET['idExamen']);
+    $examen = BD::obtieneExamen($_GET["idExamen"]);
+
+    $idL = $_GET["id"];
+
     $preguntasCorrectas = [];
-    $preguntasCorrectas = JSON_decode(BD::obtieneIdExamenHecho($_GET['idExamen']));
+    $preguntasCorrectas = JSON_decode(BD::obtieneIdExamenHecho($_GET["idExamen"], $idL));
 
     ?>
 
@@ -31,7 +34,7 @@
         $u = sesion::leer('usuario');
         $rol = BD::obtieneRol($u->rol);
         $input="";
-
+        $html ="";
         if($rol->id==1){
         ?>
             <form action="" method="POST">
@@ -49,12 +52,13 @@
 
                 <section id="preguntasCorrectas" hidden>
 
-                    <?php 
-                   
+                    <?php
+
                         for($i=0; $i<count($preguntasCorrectas);$i++){
                             $pre = $preguntasCorrectas[$i]->pregunta;
                             $re = $preguntasCorrectas[$i]->respuesta->id;
-                            $input.="<input type='text' id='preg_$pre' value='$re'>";
+                            $co = BD::obtieneRespuestaCorrecta($pre);
+                            $input.="<input resp='$co' type='text' id='preg_$pre' value='$re'>";
                         }
 
                         echo $input;
@@ -69,6 +73,23 @@
             </section>
 
             <section id="paginador_examenH"></section>
+
+            <section id="muestraRespuestas">
+<?php
+            foreach($preguntasCorrectas as $i){
+            $c = BD::obtieneRespuestaCorrecta($i->pregunta);
+                if($i->respuesta->id == $c){
+                    $html.='<p><em class="cor">Correcta</em> A la pregunta <strong>'.BD::obtienePregunta($i->pregunta)->enunciado.' </strong>has respondido <strong>'.$i->respuesta->enunciado.' </strong>y es la respuesta correcta</p>';
+                } else {
+                    $html.='<p><em class="inc">Incorrecta</em> A la pregunta <strong> '.BD::obtienePregunta($i->pregunta)->enunciado.' </strong>has respondido <strong>'.$i->respuesta->enunciado.'</strong> y la respuesta correcta es <strong>'.BD::obtieneRespuesta($c)->enunciado.'</strong></p>';
+                }
+            }
+
+            echo $html;
+
+?>
+
+        </section>
     </section>
 
     <?php include ("includes/footer.php");?>

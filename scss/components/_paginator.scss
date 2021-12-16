@@ -21,12 +21,12 @@
         border: 1px solid #ddd;
         background-color: white;
 
-        
+
     }
     .act{
         background-color: rgb(0, 183, 255);
     }
-    
+
 
     a.activo {
         background-color: #4CAF50;
@@ -35,5 +35,13 @@
 
     a:hover:not(.activo) {
         background-color: #ddd;
+    }
+
+    .correcto{
+        background-color: green;
+    }
+
+    .incorrecto{
+        background-color: red;
     }
 }
